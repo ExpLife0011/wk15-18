@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+  redis:
+    restart: always
+    image: redis:3.2
+    container_name: redis
+    environment:    
+    - "TZ=Asia/Shanghai"
+
+  postgresql:
+    restart: always
+    image: postgres:10.3
+    container_name: postgresql
+    volumes:
+    - /data/idfa/postgresql:/idfa/postgresql:Z
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=password
+    - POSTGRES_DB=idfa
+    - PGDATA=/idfa/postgresql
+
+    - TZ=Asia/Shanghai
+
+  worker:
+    restart: always
+    image: li/idfatracker
+    container_name: worker
+    links:
+    - postgresql:db
+    - redis:rd
+    command: "it worker newlog --db='host=db port=5432 user=postgres password=password dbname=idfa' --url='redis://rd:6379/0'"
+
+  udp_server:
+    restart: always
+    image: li/idfatracker
+    container_name: udp_server
+    links:
+    - postgresql:db
+    - redis:rd
+    ports:
+    - "9998:9998/udp"
+    command: "python3 /idfa/src/idfa_udp_server/startup.py -i localhost -p 9998  -d 'port=5432 user=postgres host=db password=password dbname=idfa' -u redis://rd:6379/0"

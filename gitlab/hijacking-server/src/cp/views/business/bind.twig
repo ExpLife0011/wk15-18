@@ -1,0 +1,30 @@
+{% set menu_name = "business" %}
+{% set sidebar_name = "业务规则列表" %}
+{% extends '@view/layouts/base.twig' %}
+{% set title='绑定服务器' %}
+
+{% block body %}
+<div class="content">
+  <h2>{{ business.name }}&nbsp;&nbsp;<span style="color:red">(ID：{{ business.id }})</span></h2>
+  <hr />
+  <p>
+  </p>
+  {% set form=ActiveForm.begin({
+    id: 'bind-server-form',
+    type: constant('kartik\\widgets\\ActiveForm::TYPE_HORIZONTAL' ),
+    formConfig: {labelSpan : 2,
+                 deviceSize : constant('kartik\\widgets\\ActiveForm::SIZE_SMALL')}
+    
+  }) %}
+
+  {{ form.field(model, 'sids').checkboxlist(ArrayHelper.getColumn(svs, 'fullname'))|raw }}
+  <div class="form-group">
+    <label for="server-name" class="col-sm-2 control-label">&nbsp;</label>
+    <div class="col-sm-4">
+      <input type='submit' value='提交' class='btn btn-large btn-primary' /> 
+    </div>
+  </div>
+
+  {{ void(form.end()) }}
+</div>
+{% endblock %}

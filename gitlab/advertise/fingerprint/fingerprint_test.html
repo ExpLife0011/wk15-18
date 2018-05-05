@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='./fingerprint2.js'></script>
+</head>
+<body>
+<script>
+    //抓取项配置(可不配置)
+    var options = {swfPath: '/assets/FontList.swf', excludeUserAgent: true ,excludeWebGL:true};
+    new Fingerprint2(options).get(function(result, components){
+        console.log(result); //一个哈希值,唯一标识浏览器
+        console.log(components); // 一个数组,记录抓取的客户端的信息
+    });
+    //console.log(hash);
+    //    ajax兼容写法
+    if (window.XDomainRequest) {
+        xdr = new XDomainRequest();
+        if (xdr != null) {
+            xdr.onload = doResult;
+            xmlHttpReg = xdr;
+            xmlHttpReg.readyState = 4;
+            xmlHttpReg.status = 200;
+        }
+        if (xmlHttpReg != null) {
+            var urlStr = "http://api.unified.com/js?request=" + url + "&referer=" + ref;
+            xmlHttpReg.open("GET", urlStr, true);
+            xmlHttpReg.send();
+            xmlHttpReg.onreadystatechange = function () {
+
+            };
+        }
+    } else {
+        if (window.XMLHttpRequest) {
+            xmlHttpReg = new XMLHttpRequest();
+            if (xmlHttpReg != null) {
+                var str = '{"request":"' + url + '","referer":"' + ref + '"}';
+                xmlHttpReg.open("POST", "http://api.unified.com/js", true);
+                xmlHttpReg.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                xmlHttpReg.send(str);
+                xmlHttpReg.onreadystatechange = function () {
+                    console.log(xmlHttpReg.responseText)
+
+                };
+            }
+        }
+    }
+</script>
+</body>
+</html>

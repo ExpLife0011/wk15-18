@@ -1,0 +1,41 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title="导出操作日志" %}
+
+{% block content %}
+    <h2></h2>
+    <hr />
+
+    {% set form = ActiveForm.begin({
+        id : 'list-form',
+        type: constant('kartik\\widgets\\ActiveForm::TYPE_HORIZONTAL' ),
+        'method': 'get','action':'/index.php?r=behavior/download',
+        formConfig: {labelSpan : 1,
+            deviceSize : constant('kartik\\widgets\\ActiveForm::SIZE_SMALL')}
+    }) %}
+
+    {{ form.field(model, 'cdate_start').widget('kartik\\widgets\\DateTimePicker')|raw }}
+    {{ form.field(model, 'cdate_end').widget('kartik\\widgets\\DateTimePicker')|raw }}
+    <div class="col-sm-1" style="float:left"></div>
+    <div class="col-sm-3" style="float:left;padding-left:0px;">
+        <input type='submit' value='导出' class='look btn btn-large btn-primary' />
+    </div>
+    
+    {{ void(form.end()) }}
+
+    
+<script type="text/javascript" src="/metis/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $(".form-group .col-sm-11").attr("class","col-sm-3");
+      $(".form-group .col-sm-3").eq(1).hide();
+
+      $(".input-group").datetimepicker({
+        format: 'yyyy-mm-dd',
+        todayBtn:  1,
+        todayHighlight: 1,
+        minView:2,
+        autoclose:1
+      });
+    });
+</script>
+{% endblock %}

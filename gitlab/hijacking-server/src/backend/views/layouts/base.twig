@@ -1,0 +1,48 @@
+{{ this.beginPage() }}
+{{ void(appasset.register(this)) }}
+<!DOCTYPE html>
+<html lang="{{ app.language }}" class="no-js">
+  <head>
+    <meta charset="{{ app.charset }}">
+    <title>{{ title }}</title>
+    <meta name="msapplication-TileColor" content="#5bc0de" />
+    <meta name="msapplication-TileImage" content="/metis/img/metis-tile.png" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/metis/lib/bootstrap/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/metis/lib/font-awesome/css/font-awesome.min.css">
+
+    <!-- Metis core stylesheet -->
+    <link rel="stylesheet" href="/metis/css/main.min.css">
+
+    <!-- Metis Theme stylesheet -->
+    <link rel="stylesheet" href="/metis/css/theme.css">
+    <link rel="stylesheet" href="/css/superTables.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+      <script src="/metis/lib/html5shiv/html5shiv.js"></script>
+        <script src="/metis/lib/respond/respond.min.js"></script>
+        <![endif]-->
+
+    <!--Modernizr 2.7.2-->
+    <script src="/metis/lib/modernizr/modernizr.min.js"></script>
+    {% block other_css_js %}
+    {% endblock %}
+    {{ this.head() }}
+    {{ HTML.csrfMetaTags()|raw }}
+  </head>
+  <body class="{{ body_class }}">
+    {{ this.beginBody() }}
+    {% block body %}
+    {% endblock %}
+    {{ this.endBody() }}
+    {% block page_scripts %}
+    {% endblock %}
+  </body>
+</html>
+{{ this.endPage() }}

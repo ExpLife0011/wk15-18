@@ -1,0 +1,52 @@
+{% set menu_name = "statistics" %}
+{% set sidebar_name = "业务统计" %}
+{% extends '@view/layouts/base.twig' %}
+{% set title="业务统计" %}
+{% block body %}
+<div class="content">
+<h3>共执行{{  count }}次</h3>
+  <hr />
+  {% include "@app/views/layouts/notice.twig" %}
+      {% set form = ActiveForm.begin({
+        id : 'stat-form',
+        type: constant('kartik\\widgets\\ActiveForm::TYPE_HORIZONTAL' ),
+        'method': 'get','action':'/stat/index',
+        formConfig: {labelSpan : 2,
+                     deviceSize : constant('kartik\\widgets\\ActiveForm::SIZE_SMALL')}
+      }) %}
+      {{ form.field(model, 'start_time').widget('kartik\\widgets\\DateTimePicker')|raw }}
+      {{ form.field(model, 'end_time').widget('kartik\\widgets\\DateTimePicker')|raw }}
+      {{ form.field(model, 'sid').widget('kartik\\widgets\\Select2', {
+        data : serverList,
+        options : {
+          'id' : 'sid',
+          placeholder : 'Select...'},
+        pluginOptions : {
+          allowClear : true
+        }
+      })|raw }}
+      {{ form.field(model, 'bid').widget('kartik\\widgets\\DepDrop', {
+        type: constant('kartik\\widgets\\DepDrop::TYPE_SELECT2'),
+        data : businessList,
+        options : {'id' : 'bid',
+                   },
+        select2Options: {
+          pluginOptions : {
+            allowClear : true
+          }
+        },
+        pluginOptions : {
+          depends : ['sid'],
+          placeholder : 'Select...',
+          url : Url.to(['/stat/business'])
+        }
+      })|raw }}
+      <div class="form-group">
+        <label for="business-name" class="col-sm-2 control-label">&nbsp;</label>
+        <div class="col-sm-4">
+          <input type='submit' value='统计' class='btn btn-large btn-primary' /> 
+        </div>
+      </div>
+      {{ void(form.end()) }}
+  </div>
+{% endblock %}

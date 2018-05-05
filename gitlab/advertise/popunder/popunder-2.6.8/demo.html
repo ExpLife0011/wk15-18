@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <script>
+    var loadScript = function(src, noCache) {
+        document.write('<script src="' + src + (noCache ? '?' + Math.random() : '') + '"><\/script>')
+    };
+    var base = '';
+    loadScript(base + 'script.js', true);
+    loadScript(base + 'license.demo.js', true);
+    loadScript(base + 'demo.js', true);
+    </script>
+</head>
+
+<body>
+    Work with iframe:
+    <br/>
+    <div>
+        <div style="position: absolute; top: 50px; right: 100px;">
+            <!-- <iframe width="420" height="315" src="https://www.youtube.com/embed/EUHcNeg_e9g" frameborder="0" allowfullscreen></iframe> -->
+        </div>
+    </div>
+    <br/> Here is your body.
+    <br /> Pop state saved in 15 seconds, please refresh this page to get new pop
+    <br />
+    <br />
+    <a href="http://example.com/?_blank" target="_blank">A link with target = _blank</a>
+    <br />
+    <br />
+    <a href="http://example.com/">A normal link</a>
+    <br/>
+    <br />
+    <a href="http://example.com/?undefined">
+        <img src="http://i.imgur.com/abr2s5K.jpg">
+    </a>
+    <br/>
+    <br/>
+    <button id="button-create-a-div">I'm a button with event.preventDefault() and I should create an element (DIV)</button>
+    <br/>
+    <br/>
+    <button id="button-with-span-create-a-div"><span>I'm a button with text wrapped by <strong>span</strong> with event.preventDefault() and I should create an element (DIV)</button>
+
+    <br/><br/>
+    I'm a radio choice and I should create a DIV when clicked, click me to get pop and see normal browser's hevavior<br/>
+    <ul>
+        <li><label><input type="radio" name="choice" value="1" id="choice" title="Choice 1" /> Choice 1 wrapped by label</label></li>
+        <li><input type="radio" name="choice" value="2" id="choice" title="Choice 2" /> Choice 2</li>
+    </ul>
+
+    I'm a checkbox choice and I should create a DIV when checked, click me to get pop and see normal browser's hevavior<br/>
+    <ul>
+        <li><input type="checkbox" name="checkbox-one" value="1" id="checkbox" title="Checkbox 1" /> Checkbox 1</li>
+        <li><input type="checkbox" name="checkbox-two" value="2" id="checkbox" title="Checkbox 2" /> Checkbox 2</li>
+    </ul>
+
+<script>
+    document.getElementById('button-create-a-div').onclick = function(e) {
+        e.preventDefault();
+
+        var div = document.createElement('div');
+        div.style.width = "100px";
+        div.style.height = "100px";
+        div.style.background = "blue";
+        div.style.color = "black";
+        div.innerHTML = "Hello";
+        document.body.appendChild(div);
+    }
+
+    document.getElementById('button-with-span-create-a-div').onclick = function(e) {
+        e.preventDefault();
+
+        var div = document.createElement('div');
+        div.style.width = "100px";
+        div.style.height = "100px";
+        div.style.background = "red";
+        div.style.color = "black";
+        div.innerHTML = "Hello";
+        document.body.appendChild(div);
+    }
+</script>
+
+</body>
+</html>

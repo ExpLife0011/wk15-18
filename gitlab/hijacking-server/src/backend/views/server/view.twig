@@ -1,0 +1,130 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title='查看服务器' %}
+
+{% block content %}
+  <h2>{{ model.name }}</h2>
+  <hr />
+  <p>
+    {{ HTML.a('编辑', {0:'update', 'id': model.id}, {'class' : 'btn btn-primary'})|raw }}
+    {{ HTML.a('分配业务', {0:'assign', 'id': model.id}, {'class' : 'btn btn-primary'})|raw }}
+    {{ HTML.a('分配业务组', {0:'group', 'id': model.id}, {'class' : 'btn btn-primary'})|raw }}
+    {{ HTML.a('白名单管理', {0:'blacklist', 'id': model.id}, {'class' : 'btn btn-primary'})|raw }}
+    {{ HTML.a('PPPOE帐号管理', {0:'pppoe', 'id': model.id}, {'class' : 'btn btn-primary'})|raw }}
+    {% if model.status == 0 %}
+    {{ HTML.a('开启服务器', {0:'switch', 'id': model.id}, {'class' : 'btn btn-success'})|raw }}
+    {% else %}
+    {{ HTML.a('关闭服务器', {0:'switch', 'id': model.id}, {'class' : 'btn btn-danger'})|raw }}
+    {% endif %}
+  </p>
+    <hr />
+ {#  {% if business is not empty %}
+  <h4>已分配业务:</h4>
+  {% for k,v in business %}
+  <span class="btn btn-metis-2 btn-xs">{{ v }}</span>
+  {% endfor %}
+  {% endif %} #}
+  {{ widget('yii\\widgets\\DetailView', {
+    'model' : model,
+    'attributes' : [
+      'id',
+      'name',
+      'ip',
+      'username',
+      'port',
+      'status',
+    ]
+  }) }}
+    <div class="box">
+                  <header>
+                    <h5>已分配业务</h5>
+                    <div class="toolbar">
+                      <div class="btn-group">
+                        <a class="btn btn-sm btn-default minimize-box" data-toggle="collapse" href="#defaultTable">
+                          <i class="fa fa-angle-up"></i>
+                        </a> 
+                        <a class="btn btn-danger btn-sm close-box">
+                          <i class="fa fa-times"></i>
+                        </a> 
+                      </div>
+                    </div>
+                  </header>
+                  <div class="body collapse in" id="defaultTable">
+                    <table class="table responsive-table">
+                      <thead>
+                        <tr>
+                          <th>业务ID</th>
+                          <th>业务名称</th>
+                          <th>执行间隔</th>
+                          <th>执行概率</th>
+                          <th>结束时间</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% if business is not empty %}
+                      {% for bk,bv in business %}
+                      <tr>
+                          <td>{{ bv.business.id }}</td>
+                          <td>{{ bv.business.name }}</td>
+                          <td>{{ bv.business.rate_limit }}</td>
+                          <td>{{ bv.business.pro }}</td>
+                          <td>{{ bv.business.end }}</td>
+                          <td>
+                          <a data-pjax="0" title="View" href="/index.php?r=business%2Fview&amp;id={{ bv.business.id }}" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a>
+                          <a data-pjax="0" title="Update" href="/index.php?r=business%2Fupdate&amp;id={{ bv.business.id }}" target="_blank"><span class="glyphicon glyphicon-pencil"></span></a>
+                          </td>
+                          <!--td>{% for k,v in bv.srcurl %}{{ v.url }}<br />{% endfor %}</td-->
+                          <!--td>{% for k,v in bv.target %}{{ v.content }}<br />{% endfor %}</td-->
+                    </tr>
+                    {% endfor %}
+                      {% endif %}
+                        {#{ widget('yii\\widgets\\ListView', {
+    'dataProvider' : businessProvider,
+    'itemView' : 'business.twig',
+    'layout' : '{items}'
+  }) }#}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+   <div class="box">
+                  <header>
+                    <h5>已分配业务组</h5>
+                    <div class="toolbar">
+                      <div class="btn-group">
+                        <a class="btn btn-sm btn-default minimize-box" data-toggle="collapse" href="#defaultTable">
+                          <i class="fa fa-angle-up"></i>
+                        </a> 
+                        <a class="btn btn-danger btn-sm close-box">
+                          <i class="fa fa-times"></i>
+                        </a> 
+                      </div>
+                    </div>
+                  </header>
+                  <div class="body collapse in" id="defaultTable">
+                    <table class="table responsive-table">
+                      <thead>
+                        <tr>
+                          <th>业务组ID</th>
+                          <th>业务组名称</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% if businessGroup is not empty %}
+                        {% for bgv in businessGroup %}
+                        <tr>
+                              <td>{{ bgv.gid }}</td>
+                              <td>{{ HTML.a(bgv.groups.name, {0:'showgroup', 'id': bgv.gid})|raw }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                        {#{ widget('yii\\widgets\\ListView', {
+    'dataProvider' : businessGroupProvider,
+    'itemView' : 'business_group.twig',
+    'layout' : '{items}'
+  }) }#}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+{% endblock %}

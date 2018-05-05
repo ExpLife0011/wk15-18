@@ -1,0 +1,26 @@
+<html>
+<body style="margin:0">
+<meta charset="UTF-8">
+<script type="text/javascript">
+   //20170430修改为测试用携程链接
+	function GetQueryString(name)
+	{
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+	//1.m18麦，2，天天果园
+	var des_urls=["http://click.linktech.cn/index.htm?v=2.1&k=%2BrsFNsbRTxZ94XoRqWKZmsjtFYAH5iyDmJrpyfpUmauc%2FnyvLTygQWeE7G0vbEQ3YUICyWKGsE4zvPAlEbUNEsk%2FWrn2pJpBJqojwV0d%2BaRyJ%2BwEZ8yo2T39uXPmAmUy","http://click.linktech.cn/index.htm?v=2.1&k=2Ei2V1EpniMLIq5pc3BtdOS8VPUKjB%2FirLgWKx4Yf4ODS%2Byu0husQScmVykpy9WIwAJy9GTM37qCN%2Fg87E%2BMD%2FEUNolFV8AzIRJX5QFPIT1zmpjmmG1eNA9RpbRT8fpp"];
+
+
+	var c=(new Date).valueOf(),d,e;
+	d=parseInt(GetQueryString("k"));//时间戳
+	e=GetQueryString("f");//网站
+	if(!(isNaN(e)||isNaN(d))){
+		1E4<c-d?document.write('<iframe frameBorder="0" scrolling="yes" width="100%" height="100%" src="http://www.eku123.com/" ></iframe>'):window.location.href=des_urls[parseInt(e)];
+	}else{
+		document.write('<iframe frameBorder="0" scrolling="yes" width="100%" height="100%" src="http://www.eku123.com/" ></iframe>')
+	}
+</script>
+</body>
+</html>

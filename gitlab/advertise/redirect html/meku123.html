@@ -1,0 +1,25 @@
+<html>
+<body style="margin:0">
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function GetQueryString(name)
+	{
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+	//1.考拉海购
+	var des_urls=["http://www.eku123.com/m/index.html","http://m.kaola.com/?tag=ebccfc3fdcf32124b3e0cc29ed17d738&__da_9611f019_571dc9b32f833c80"];
+
+
+	var c=(new Date).valueOf(),d,e;
+	d=parseInt(GetQueryString("k"));//时间戳
+	e=GetQueryString("f");//网站
+	if(!(isNaN(e)||isNaN(d))){
+		1E4<c-d?document.write('<iframe frameBorder="0" scrolling="yes" width="100%" height="100%" src="http://www.eku123.com/m/index.html" ></iframe>'):window.location.href=des_urls[parseInt(e)];
+	}else{
+		document.write('<iframe frameBorder="0" scrolling="yes" width="100%" height="100%" src="http://www.eku123.com/m/index.html" ></iframe>')
+	}
+</script>
+</body>
+</html>

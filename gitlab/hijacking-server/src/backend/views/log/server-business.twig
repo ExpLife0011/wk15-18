@@ -1,0 +1,84 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title="服务器业务列表" %}
+
+{% block content %}
+  <style>
+    .title_box{
+      width:100%;
+      height:26px; 
+      border:none;
+      display:inline-block;
+      position:relative;
+      background:url(css/line.png) no-repeat center center #fff;
+      background-size: 100% 100%;
+    }
+    .title_box .title_name1{
+      position:absolute;
+      left:5px;
+      bottom:2px;
+      font-style:normal;
+      color:#333;
+      font-weight:bold;
+    }
+    .title_box .title_name2{
+      position:absolute;
+      right:5px;
+      top:2px;
+      font-style:normal;
+      color:#333;
+      font-weight:bold;
+    }
+    .table_box{width:100%; height:100%; overflow-x:scroll;}
+    .table_box table tr td{font-size:16px; font-weight:normal; padding:8px 5px;}
+    .list-c .table td{padding:3px;}
+  </style>
+
+  <h2>服务器业务列表</h2>
+  <hr />
+
+<div class="list-c">
+  {% if result %}
+      <table class="table table-striped table-bordered" id="tabProduct">            
+          <tr>
+            <td class="title_box" style="border:none;"><em class="title_name1">业务</em><em class="title_name2">服务器</em></td>
+            {% for s in server %}
+            <td style="text-align:center;vertical-align:middle; color:#333; font-weight:bold; background:#fff;"> <a href="/index.php?r=server/view&id={{ s.id }}" target="_blank">{{ s.id ~ '.' ~ s.name }}</a></td>
+            {% endfor %}
+          </tr>  
+            {% for b in business %}            
+              <tr>                  
+                <td class="b_name_th col-sm-1"><a href="/index.php?r=business/view&id={{ b.id }}" target="_blank"> {{ b.id ~ '.' ~ b.name }} </a></td>                  
+              {% for s in server %}
+                <td align="center">
+                  {% if (result[s.id][b.id]) %} 
+                    {% if (time[s.id][b.id]) %}
+                      {% set status= time[s.id][b.id]|date("Y-m-d H:i:s") %}
+                      {{ status }}
+                    {% else %}
+                      {{ '已开启' }}
+                    {% endif %}
+                  {% endif %}
+                </td>
+              {% endfor %}
+              </tr> 
+            {% endfor %}             
+      </table>
+  {% endif %} 
+</div>
+
+  <script type="text/javascript" src="/metis/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/metis/js/jFixed.min.js"></script>
+  <script type="text/javascript">
+    var p_height = $(window).outerHeight()-130,
+        p_width =  $(window).width()-310;
+
+    $("#tabProduct").jFixedtable({
+      fixedCols: 1,
+      width: p_width,
+      height: p_height,
+      headerRows: 1 
+    });
+
+  </script>
+
+{% endblock %}

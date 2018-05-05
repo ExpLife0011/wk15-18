@@ -1,0 +1,22 @@
+{% extends '@view/layouts/base.twig' %}
+
+{% set body_class = 'login' %}
+{% block body %}
+    <div class="container login">
+      <div class="text-center">
+        <img src="/metis/img/logo.png" alt="Metis Logo">
+      </div>
+      <div class="tab-content">
+        <div id="login" class="tab-pane active">
+          {% set form = ActiveForm.begin({'id':'login-form', 'options' : {'class' : 'form-signin'}}) %}
+          <p class="text-muted text-center">
+            Enter your username and password
+          </p>
+          {{ form.field(model, 'username', {'options':{'class':''}}).label(false).error(false).input('text',{'placeholder':'Username'})|raw }}
+          {{ form.field(model, 'password', {'options':{'class':''}}).label(false).error(false).input('password',{'placeholder':'Password'})|raw }}
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          {{ void(form.end()) }}
+        </div>
+      </div>
+    </div><!-- /container -->
+{% endblock %}

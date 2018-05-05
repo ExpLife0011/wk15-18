@@ -1,0 +1,1981 @@
+
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  max-width: 980px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 45px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>README</title></head><body><article class="markdown-body"><h2 id="better-javascript-popunder"><a name="user-content-better-javascript-popunder" href="#better-javascript-popunder" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Better Javascript Popunder</h2>
+<p>#1 pop script on the market</p>
+<ul>
+<li>Author: Phan Thanh Cong</li>
+<li>Email: <a href="mailto:contact@ptcong.com">contact@ptcong.com</a></li>
+<li>Official website: <a href="http://popunderjs.com">http://popunderjs.com</a></li>
+</ul>
+<hr />
+<h3 id="table-of-contents"><a name="user-content-table-of-contents" href="#table-of-contents" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Table Of Contents</h3>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#configuration">Configuration</a><ul>
+<li><a href="#limit-domains-for-unlimited-package">Limit Domains For Unlimited Package</a></li>
+</ul>
+</li>
+<li><a href="#adding-new-pop">Adding new pop</a></li>
+<li><a href="#use-pop-options">Use pop options</a></li>
+</ul>
+</li>
+<li><a href="#api">API</a><ul>
+<li><a href="#config-method">config()</a></li>
+<li><a href="#getconfig-method">getConfig()</a></li>
+<li><a href="#add-method">add()</a></li>
+<li><a href="#getstack-method">getStack()</a></li>
+<li><a href="#emptystack-method">emptyStack()</a></li>
+<li><a href="#bindto-method">bindTo()</a></li>
+<li><a href="#ignoreto-method">ignoreTo()</a></li>
+<li><a href="#getbindto-method">getBindTo()</a></li>
+<li><a href="#getignoreto-method">getIgnoreTo()</a></li>
+<li><a href="#coverelement-method">coverElement()</a></li>
+<li><a href="#getclickedelement-method">getClickedElement()</a></li>
+<li><a href="#getfiredcount-method">getFiredCount()</a></li>
+<li><a href="#getqueuedcount-method">getQueuedCount()</a></li>
+<li><a href="#hasqueued-method">hasQueued()</a></li>
+<li><a href="#isreachedperpage-method">isReachedPerpage()</a></li>
+<li><a href="#getlastopenat-method">getLastOpenAt()</a></li>
+<li><a href="#getlastevent-method">getLastEvent()</a></li>
+<li><a href="#reset-method">reset()</a></li>
+</ul>
+</li>
+<li><a href="#logger-api">Logger</a><ul>
+<li><a href="#loggerlog-method">log()</a></li>
+<li><a href="#loggerprint-method">print()</a></li>
+</ul>
+</li>
+<li><a href="#cookie-api">Cookie</a><ul>
+<li><a href="#cookieset-method">set()</a></li>
+<li><a href="#cookieget-method">get()</a></li>
+<li><a href="#cookieremove-method">remove()</a></li>
+</ul>
+</li>
+<li><a href="#storage-api">Storage</a><ul>
+<li><a href="#storageisavailable-method">isAvailable()</a></li>
+<li><a href="#storageisavailableset-method">set()</a></li>
+<li><a href="#storageisavailableget-method">get()</a></li>
+<li><a href="#storageisavailableremove-method">remove()</a></li>
+</ul>
+</li>
+<li><a href="#browser-api">Browser</a><ul>
+<li><a href="#browserversion-property">version</a></li>
+<li><a href="#browserlongversion-property">longVersion</a></li>
+<li><a href="#browserislinux-property">isLinux</a></li>
+<li><a href="#browseriswin-property">isWin</a></li>
+<li><a href="#browserismac-property">isMac</a></li>
+<li><a href="#browserisios-property">isIOS</a></li>
+<li><a href="#browserisandroid-property">isAndroid</a></li>
+<li><a href="#browserismobile-property">isMobile</a></li>
+<li><a href="#browseriswebkit-property">isWebkit</a></li>
+<li><a href="#browserismozilla-property">isMozilla</a></li>
+<li><a href="#browserischrome-property">isChrome</a></li>
+<li><a href="#browserisfirefox-property">isFirefox</a></li>
+<li><a href="#browserissafari-property">isSafari</a></li>
+<li><a href="#browserisie-property">isIE</a></li>
+<li><a href="#browserisedge-property">isEdge</a></li>
+<li><a href="#browserisopera-property">isOpera</a></li>
+<li><a href="#browserversioncompare-method">versionCompare</a></li>
+<li><a href="#browserpopunderavailable-method">popunderAvailable</a></li>
+</ul>
+</li>
+<li><a href="#event-api">Event</a><ul>
+<li><a href="#eventbind-method">bind()</a></li>
+<li><a href="#eventunbind-method">unbind()</a></li>
+<li><a href="#eventgettarget-method">getTarget()</a></li>
+</ul>
+</li>
+<li><a href="#utils-api">Utils</a><ul>
+<li><a href="#utilsversioncompare-method">versionCompare()</a></li>
+<li><a href="#utilstime-method">time()</a></li>
+<li><a href="#utilsisflashenabled-method">isFlashEnabled()</a></li>
+<li><a href="#utilsaddquerystring-method">addQueryString()</a></li>
+<li><a href="#utilsmerge-method">merge()</a></li>
+<li><a href="#utilsrand-method">rand()</a></li>
+<li><a href="#utilscreateelement-method">createElement()</a></li>
+<li><a href="#utilsremoveelement-method">removeElement()</a></li>
+<li><a href="#utilsgetparent-method">getParent()</a></li>
+<li><a href="#utilsutimeout-method">uTimeout()</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="introduction"><a name="user-content-introduction" href="#introduction" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Introduction</h3>
+<p>BetterJsPop is #1 pop under script on the market, written in Javascript by Thanh Cong since 2012. At first it was shared for free but not updated frequently and become paid premium script since lately 2015 with lot of improvements.</p>
+<ul>
+<li>Make pop/tab under/up, works on every desktop, mobile browsers.</li>
+<li>Bypass Adblock Plus (<a href="#bypass-adblock">read more</a>)</li>
+<li>Support multiple urls, random urls, hooks.</li>
+<li>Keep normal browser behaviors while running pops.</li>
+<li>Use OOP - modern syntax, very easy to setup/install.</li>
+<li>Filter mobile, desktop traffics.</li>
+<li>Support asynchonours loading.</li>
+<li>Can register or ignore to specific HTML tag names or elements (DOM).</li>
+<li>Hidding traffic source.</li>
+<li>Well API, documents.</li>
+<li>and more..</li>
+</ul>
+<h6 id="bypass-adblock"><a name="user-content-bypass-adblock" href="#bypass-adblock" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bypass Adblock</h6>
+<blockquote>
+<p>Our script can open pop even with Adblock enabled, but unfortunately, if your pop url is in Adblock&rsquo;s blacklist, they will close pop window/tab right after it opened. First time we can use <code>redirector</code> trick to bypass this, but Adblock has updated their mechanism same as uBlock Origin as they monitor all urls in tabs, windows then close it when they found a url in blacklist. <br />
+If your pop url isn&rsquo;t in their blacklist ? Congratulation!! You can use our script to open your pop as well even if Adblock is enabled.</p>
+</blockquote>
+<h3 id="installation"><a name="user-content-installation" href="#installation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Installation</h3>
+<p>To install this script, you have to upload these files to your server.</p>
+<p>They are: <code>script.js</code>, <code>license.packed.js</code> or <code>license.XX.js</code> while XX is a random number.</p>
+<p>If you&rsquo;re using local environment, you can use some local domains as <code>127.0.0.1</code>, <code>*.local</code>, <code>192.168.1.99</code></p>
+<blockquote>
+<p><em>Note: <code>license.packed.js</code> is file i sent you via email after you registered your domains with us. Don&rsquo;t use license file that you got from updates or .zip file, it&rsquo;s just a demo license and does not work in production environment.</em></p>
+</blockquote>
+<p>For example, your domain is: domain.com, after uploaded all needed files, we got some links:</p>
+<p><code>http://domain.com/script/script.js</code><br />
+<code>http://domain.com/script/license.packed.js</code></p>
+<p>So we use basic setup to see how it works.</p>
+<pre><code>&lt;script src=&quot;http://domain.com/script/script.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://domain.com/script/license.packed.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+BetterJsPop.add('http://example.com', {under: true, newTab: false});
+&lt;/script&gt;
+</code></pre>
+
+<p>Then open your browser to see your result</p>
+<blockquote>
+<p><em>Note: You have to run it in <code>http://</code> or <code>https://</code> protocol, don&rsquo;t run it by double click to your html file. It may not works with <code>file://</code> protocol.</em></p>
+</blockquote>
+<h4 id="configuration"><a name="user-content-configuration" href="#configuration" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuration</h4>
+<blockquote>
+<p>By default, the script using <code>BetterJsPop</code> as variable name. You can chagne this to any name you want to avoid conflict with other adnetwork (due we have lot of adnetwork as customers).<br />
+To change this variable, please add <code>window.popns = 'YourVarName'</code> on top of <code>script.js</code> or before loading <code>script.js</code><br />
+For example:<br />
+<pre><code>&lt;script&gt;window.popns = 'YourVarName';&lt;/script&gt;
+&lt;script src=&quot;http://domain.com/script/script.js&quot;&gt;&lt;/script&gt;
+</code></pre></p>
+</blockquote>
+<p>We have some config options with default values:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#option-perpage"><strong><code>perpage</code></strong></a></td>
+<td><code>integer</code></td>
+<td><code>9999</code></td>
+</tr>
+<tr>
+<td><a href="#option-bindto"><strong><code>bindTo</code></strong></a></td>
+<td><code>Array</code></td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><a href="#option-ignoreto"><strong><code>ignoreTo</code></strong></a></td>
+<td><code>string</code> <code>null</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><a href="#option-delay"><strong><code>delay</code></strong></a></td>
+<td><code>integer</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><a href="#option-covertags"><strong><code>coverTags</code></strong></a></td>
+<td><code>Array</code></td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><a href="#option-ignorelistener"><strong><code>ignoreListener</code></strong></a></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><a href="#option-debug"><strong><code>debug</code></strong></a></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a href="#option-tabunderurl"><strong><code>tabunderUrl</code></strong></a></td>
+<td><code>string</code> <code>function</code></td>
+<td><code>window.location.href</code></td>
+</tr>
+<tr>
+<td><a href="#option-coverscrollbar"><strong><code>coverScrollbar</code></strong></a></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><a href="#option-webkitanchorblank"><strong><code>webkitAnchorBlank</code></strong></a></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><a href="#option-forceunder"><strong><code>forceUnder</code></strong></a></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a href="#option-popfallbackoptions"><strong><code>popFallbackOptions</code></strong></a></td>
+<td><code>Object</code></td>
+<td><code>{ under: true, newTab: true }</code></td>
+</tr>
+<tr>
+<td><a href="#option-mobilesensitive"><strong><code>mobileSensitive</code></strong></a></td>
+<td><code>integer</code></td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><a href="#option-noopenerhijacking"><strong><code>noOpenerHijacking</code></strong></a></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a href="#option-initonload"><strong><code>initOnload</code></strong></a></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<p>To use the options, we put inside <a href="#config-method"><code>.config()</code></a>.</p>
+<p>For example:</p>
+<pre><code>BetterJsPop.config({
+    debug: true,
+    perpage: 5
+});
+</code></pre>
+
+<h5 id="option-perpage"><a name="user-content-option-perpage" href="#option-perpage" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: perpage</h5>
+<p>To limit number of pop per page. This script can opens multiple pops at once in most of browsers, but in some browser as Chrome, it just able to open only 1 pop by 1 click.</p>
+<h5 id="option-bindto"><a name="user-content-option-bindto" href="#option-bindto" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>bindTo</code></h5>
+<p>To register script to specific tag names or DOM node. Default is for whole of web page.</p>
+<h5 id="option-ignoreto"><a name="user-content-option-ignoreto" href="#option-ignoreto" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>ignoreTo</code></h5>
+<p>To tell script don&rsquo;t open pop when user click to this tag names or DOM node.</p>
+<h5 id="option-delay"><a name="user-content-option-delay" href="#option-delay" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>delay</code></h5>
+<p>Number of milliseconds to wait between two pops. In some browsers, must have at least x seconds to avoid pop blocked message.</p>
+<h5 id="option-covertags"><a name="user-content-option-covertags" href="#option-covertags" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>coverTags</code></h5>
+<p>Sometimes you want to opens pop when user click to an IFRAME, VIDEO or OBJECT element, you should use this option.</p>
+<h5 id="option-ignorelistener"><a name="user-content-option-ignorelistener" href="#option-ignorelistener" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>ignoreListener</code></h5>
+<p>Sometimes your user clicks to an element that has registered with <code>onclick</code> and that events <code>return false</code> or <code>preventDefault()</code>. By defaults, script will ignore that, but if you want to tell script don&rsquo;t open pop when user click to element like that, change this option to <code>false</code></p>
+<h5 id="option-debug"><a name="user-content-option-debug" href="#option-debug" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>debug</code></h5>
+<p>Enable this option to see log message, or you can use <code>BetterJsPop.Logger.print()</code> to print all queued messages.</p>
+<h5 id="option-tabunderurl"><a name="user-content-option-tabunderurl" href="#option-tabunderurl" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>tabunderUrl</code></h5>
+<p>Sometimes when using tab-under, you want to pop open but redirect to another url instead of current url, you can set it by this option. This option allows input as a string or function callback.</p>
+<h6 id="option-coverscrollbar"><a name="user-content-option-coverscrollbar" href="#option-coverscrollbar" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>coverScrollbar</code></h6>
+<p>Allow the script fire pop when user click to scrollbar. Default value is <code>true</code></p>
+<h5 id="option-webkitanchorblank"><a name="user-content-option-webkitanchorblank" href="#option-webkitanchorblank" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>webkitAnchorBlank</code></h5>
+<p>Chrome and Opera browser allow open only one pop/tab by 1 click, we can&rsquo;t open more at once. If user click to a link with <code>target="_blank"</code>, we only can open pop or that link. By default, the script will open pop and does not open that link. If you want to open that link instead of pop, change this config to <code>false</code></p>
+<h5 id="option-forceunder"><a name="user-content-option-forceunder" href="#option-forceunder" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>forceUnder</code></h5>
+<p>In some desktop browsers where pop under is not available as Window Opera 39+ and Edge. We have two ways to fire pop</p>
+<ul>
+<li><code>true</code> Make a small pop up at the bottom right corner of the screen then wait for user click to main window to focus to main window, then complete the pop (make it fullscreen and under after got a click to main window)</li>
+<li><code>false</code> Use tab under</li>
+</ul>
+<h5 id="option-popfallbackoptions"><a name="user-content-option-popfallbackoptions" href="#option-popfallbackoptions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>popFallbackOptions</code></h5>
+<p><code>@since 2.2.0</code></p>
+<p>In some cases, popunder is not avalable, the script will use this option to open pop. </p>
+<p>Default is tab under <code>{ under: true, newTab: true }</code></p>
+<p>You may change it to popup as <code>{ under: false, newTab: false }</code> </p>
+<p>or tabup <code>{ under: false, newTab: true }</code> </p>
+<h5 id="option-mobilesensitive"><a name="user-content-option-mobilesensitive" href="#option-mobilesensitive" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>mobileSensitive</code></h5>
+<p><code>@since 2.2.26</code></p>
+<p><code>mobileSensitive</code> is option to control our fast click technique, sometimes if user scroll a short distance, the script will consider it&rsquo;s a click and open pop fast. <br />
+Default value is <code>30</code> will get more pop impressions, if you don&rsquo;t like this way, you can reduce to <code>20</code> or <code>10</code>. <br />
+Don&rsquo;t set it higher <code>30</code>, the option should be <code>30</code>, <code>20</code> or <code>10</code>.</p>
+<p><code>@since 2.3.27</code><br />
+If you want to disable mobile sensitive, just set it to <code>-1</code></p>
+<h5 id="option-noopenerhijacking"><a name="user-content-option-noopenerhijacking" href="#option-noopenerhijacking" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>noOpenerHijacking</code></h5>
+<p>Some popped window try to redirect main window by using <code>window.opener.location</code>, this option used to avoid this problem. For now, it can prevent this problem in most of browsers except pop-under in Chrome Mac, if you use pop-up or tab in Chrome Mac, it works fine.</p>
+<h5 id="option-initonload"><a name="user-content-option-initonload" href="#option-initonload" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Option: <code>initOnload</code></h5>
+<p><code>@since 2.4.13</code></p>
+<p>By defaults, this script will initialize its handlers when script loaded, but sometimes you want to initialize after entire page loaded. Just set it to <code>true</code></p>
+<h5 id="limit-domains-for-unlimited-package"><a name="user-content-limit-domains-for-unlimited-package" href="#limit-domains-for-unlimited-package" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Limit Domains For Unlimited Package</h5>
+<p><code>@since 1.3.2</code></p>
+<p>Unlimited package mean any website can embed and use your script. Sometimes you want to prevent this and just want to active for some domains. <br />
+It&rsquo;s so easy, just open your license file, then add the code on the top.</p>
+<pre><code>window[window.popns || 'BetterJsPop'].href = ['domain1.com', 'domain2.com'];
+...
+</code></pre>
+
+<h4 id="adding-new-pop"><a name="user-content-adding-new-pop" href="#adding-new-pop" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Adding New Pop</h4>
+<p>To add new pop to queue list, we ust <code>.add()</code> method.</p>
+<pre><code>BetterJsPop.add('http://example.com');
+</code></pre>
+
+<blockquote>
+<p><em>Note: By defaults, the script will opens pop under for each url. If you want to use pop up or tab-under, read it under.</em></p>
+</blockquote>
+<h4 id="use-pop-options"><a name="user-content-use-pop-options" href="#use-pop-options" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Use Pop Options</h4>
+<p>For each pop, we have these options:</p>
+<ul>
+<li><strong><code>name</code></strong>, <em>type <code>string</code></em><ul>
+<li>Name of the pop window, each pop already has a unique name by default, you can change it if you want.</li>
+</ul>
+</li>
+<li><strong><code>device</code></strong> <em>type <code>string</code>, default <code>"any"</code>, accepted <code>"desktop", "mobile" or "any"</code></em><ul>
+<li>To filter traffic for the pop, sometimes you want to open pop only for <code>"mobile"</code> or <code>"desktop"</code>.</li>
+</ul>
+</li>
+<li><strong><code>cookieName</code></strong> <em>type <code>string</code></em><ul>
+<li>Name of cookie flag, each pop already has a unique cookie name by default, you can change it if you want.</li>
+</ul>
+</li>
+<li><strong><code>cookieExpires</code></strong> <em>type <code>integer</code> <code>DateTime</code>, default session</em><ul>
+<li>By defaults, pop works with session that mean user have to close their browser to get new pop. You can change this to number of seconds or <code>DateTime</code> value. <a href="#pop-option-cookieexpires">(read more)</a></li>
+<li>For example, if you want pop for every 30 minutes, use <code>cookieExpires: 1800</code></li>
+</ul>
+</li>
+<li><strong><code>cookiePath</code></strong> <em>type <code>string</code>, default <code>"/"</code></em><ul>
+<li>Cookie path for this pop</li>
+</ul>
+</li>
+<li><strong><code>under</code></strong> <em>type <code>boolean</code>, default <code>true</code></em><ul>
+<li>If you want to open pop up, change this to <code>false</code></li>
+</ul>
+</li>
+<li><strong><code>newTab</code></strong> <em>type <code>boolean</code>, default <code>false</code></em><ul>
+<li>Change this to <code>true</code> if you want to use tab instead of new window.</li>
+</ul>
+</li>
+<li><strong><code>shouldFire</code></strong> <em>type <code>boolean</code> <code>function</code>, default: <code>true</code></em><ul>
+<li>You can add your logic to determine this pop should be fire or not.</li>
+<li>Your logic will be used after main logic, so if pop is fired, even you use <code>true</code>, it will not fire.</li>
+<li>You can use this to tell the script only open pop if user click to specifc element. <a href="#example-shouldfire-option">(read more)</a></li>
+</ul>
+</li>
+<li><strong><code>beforeOpen</code></strong> <em>type <code>function(url, options) - context: this pop</code>, default: NOOP</em><ul>
+<li>This method will be called before the pop fired.</li>
+</ul>
+</li>
+<li><strong><code>afterOpen</code></strong> <em>type <code>function(url, options, popWin) - context: this pop</code>, default: NOOP</em><ul>
+<li>This method will be called after the pop fired.</li>
+<li><code>popWin</code> references to window object of the pop (if you use pop up/under)</li>
+</ul>
+</li>
+<li><strong><code>noReferer</code></strong> <em>type <code>boolean</code>, default <code>false</code></em><ul>
+<li>Change this to <code>true</code> if you want to hide referer for the pop url.</li>
+<li>Note: We can&rsquo;t hide referer in IE11</li>
+</ul>
+</li>
+<li>You also have option <code>width</code>, <code>height</code>, <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code> to custom pop window size, postion</li>
+</ul>
+<h5 id="example-use-pop-options"><a name="user-content-example-use-pop-options" href="#example-use-pop-options" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example: use pop options</h5>
+<p>To use pop options, please take a look at this basic example:</p>
+<pre><code>BetterJsPop
+.add('http://example.com/url1', {
+    under: true,
+    newTab: false
+})
+.add('http://example.com/url2', {
+    device: 'desktop',
+    cookieExpires: 900, // open every 15 minutes. Note: user have to click to page content to get pop
+    beforeOpen: function(url, options) {
+        // `this` inside this function is reference of pop object
+        console.log('hey, waiting for me...');
+        console.log('pop options', this.getOptions());
+        console.log('pop options', options);
+    },
+    afterOpen: function(url, options, popWin) {
+        // wait for 3 seconds then close popped window.
+        setTimeout(function(){
+            popWin.close();
+        }, 3e3);
+
+        // you also can use this method to track pop impressions
+        $.get('http://your-track-url');
+    }
+})
+</code></pre>
+
+<h5 id="example-shouldfire-option"><a name="user-content-example-shouldfire-option" href="#example-shouldfire-option" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Example: <code>shouldFire</code> option</h5>
+<pre><code>BetterJsPop.add('http://example.com', {
+    shouldFire: function() {
+        return BetterJsPop.getClickedElement() === jQuery('#your-element')[0];
+    }
+});
+</code></pre>
+
+<h5 id="pop-option-cookieexpires"><a name="user-content-pop-option-cookieexpires" href="#pop-option-cookieexpires" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Pop option: <code>cookieExpires</code></h5>
+<p>By defaults, this script use cookie as session for pop, so if pop is fired, user have to close browser to get new pop.</p>
+<p>You also can set a <code>DateTime</code> or <code>integer</code> number of seconds for <code>cookieExpires</code>.</p>
+<p>If you want to pop for every click, you can use <code>cookieExpires: -1</code>, but to get more pops, you have to use setting <code>perpage: 9999</code> or any number you want. <a href="#option-perpage">See <code>perpage</code> option</a></p>
+<h3 id="api"><a name="user-content-api" href="#api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>API</h3>
+<h4 id="config-method"><code>config()</code> method</h4>
+<p>Used to configure the script, for more options, check <a href="#configuration">Configuration</a> section.</p>
+<pre><code>/**
+ * @param options object
+ * @return self
+ */
+BetterJsPop.config(options);
+</code></pre>
+
+<h4 id="getconfig-method"><code>getConfig()</code> method</h4>
+<p>Used to get all options that script is using.</p>
+<pre><code>/**
+ * return object
+ */
+BetterJsPop.getConfig();
+</code></pre>
+
+<h4 id="add-method"><code>add()</code> method</h4>
+<p>Used to push a pop to queue then will fire pop when user click to page content.</p>
+<pre><code>/**
+ * @param url       string|function
+ * @param options   object or not defined.
+ * @return self
+ */
+BetterJsPop.add(url, options);
+</code></pre>
+
+<p>You can pass a function as url to this method to get random url or run your logic before get url for pop.</p>
+<p>Example for random urls.</p>
+<pre><code>var getPopUrl = function() {
+    var urls = [
+        'http://example.com/?url1',
+        'http://example.com/?url2'
+    ];
+    return urls[Math.floor(Math.random() * urls.length)];
+}
+
+// each time before open this pop, script will execute getPopUrl function to get new url.
+BetterJsPop.add(getPopUrl);
+</code></pre>
+
+<p>You also can repeat <code>.add()</code> multiple times to add more pop</p>
+<pre><code>BetterJsPop.add('http://example1.com');
+BetterJsPop.add('http://example2.com');
+BetterJsPop.add('http://example3.com');
+</code></pre>
+
+<p>or you can use like this:</p>
+<pre><code>// Remember, don't have `;` after each `add`
+BetterJsPop
+    .add('http://example.com')
+    .add('http://example2.com')
+    .add('http://example3.com')
+</code></pre>
+
+<h4 id="getstack-method"><code>getStack()</code> method</h4>
+<p>Used to get all added pops.</p>
+<pre><code>/**
+ * @return array
+ */
+BetterJsPop.getStack();
+</code></pre>
+
+<h4 id="emptystack-method"><code>emptyStack()</code> method</h4>
+<p>Used to remove all added pops from stack. This will not remove cookie flags.<br />
+If you want to remove cookies, use <a href="#reset-method"><code>reset()</code> method</a> instead of.</p>
+<pre><code>/**
+ * @return void
+ */
+BetterJsPop.emptyStack();
+</code></pre>
+
+<h4 id="bindto-method"><code>bindTo()</code> method</h4>
+<p>Used to register the pop to some speicifc tag names or DOM nodes.</p>
+<pre><code>/**
+ * @param array|multiple arguments
+ * @return self
+ */
+BetterJsPop.bindTo(arguments);
+</code></pre>
+
+<p>Example:</p>
+<pre><code>// bind script to all img tags
+BetterJsPop.bindTo('img');
+
+// you want to bind to all &lt;a&gt; tag ?
+BetterJsPop.bindTo('a');
+
+// bind to more than one tag ?
+BetterJsPop.bindTo(['button', 'img']);
+
+// or can use like this
+BetterJsPop.bindTo('button', 'img');
+
+// @since 2.5.16 - Support selector
+BetterJsPop.bindTo(['#id-of-element', '.class-of-elements']);
+
+// To clear bind/ignored list, use
+BetterJsPop.bindTo(false);
+</code></pre>
+
+<p>If you want to bind script to all class name ?</p>
+<pre><code>jQuery(document).ready(function($) {
+  $('.your-class-name').each(function () {
+    BetterJsPop.bindTo(this);
+  });
+});
+</code></pre>
+
+<h4 id="ignoreto-method"><code>ignoreTo()</code> method</h4>
+<p>Same as <a href="#bindto-method">bindTo()</a> but just used to tell the script don&rsquo;t open pop when user click to ignored elements/ DOM nodes.</p>
+<pre><code>/**
+ * @param array|multiple arguments
+ * return self
+ */
+BetterJsPop.ignoreTo(arguments);
+</code></pre>
+
+<h4 id="getbindto-method"><code>getBindTo()</code> method</h4>
+<pre><code>/**
+ * Returns array of registered elements/ DOM nodes
+ */
+BetterJsPop.getBindTo();
+</code></pre>
+
+<h4 id="getbindto-method_1"><code>getBindTo()</code> method</h4>
+<pre><code>/**
+ * Returns array of ignored elements/ DOM nodes
+ */
+BetterJsPop.getIgnoreTo();
+</code></pre>
+
+<h4 id="coverelement-method"><code>coverElement()</code> method</h4>
+<p>Similar to <a href="#option-covertags"><strong><code>coverTags</code></strong></a> settings, this method is used to cover any element you want.</p>
+<pre><code>/**
+ * Tell pop script covers any element you want
+ * @param DOM
+ * @return self
+ */
+BetterJsPop.coverElement(element);
+</code></pre>
+
+<h4 id="getclickedelement-method"><code>getClickedElement()</code> method</h4>
+<pre><code>/**
+ * Returns last element that user just clicked on.
+ * return object|false
+ */
+BetterJsPop.getClickedElement();
+</code></pre>
+
+<h4 id="getfiredcount-method"><code>getFiredCount()</code> method</h4>
+<pre><code>/**
+ * Returns number of pop fired.
+ * return integer
+ */
+BetterJsPop.getFiredCount();
+</code></pre>
+
+<h4 id="getqueuedcount-method"><code>getQueuedCount()</code> method</h4>
+<pre><code>/**
+ * Returns number of pop in queued
+ * return integer
+ */
+BetterJsPop.getQueuedCount();
+</code></pre>
+
+<h4 id="hasqueued-method"><code>hasQueued()</code> method</h4>
+<pre><code>/**
+ * Determine if have pop in queued.
+ * return boolean
+ */
+BetterJsPop.hasQueued();
+</code></pre>
+
+<h4 id="isreachedperpage-method"><code>isReachedPerpage()</code> method</h4>
+<pre><code>/**
+ * Determine is reached to number of pop per page
+ * return boolean
+ */
+BetterJsPop.isReachedPerpage();
+</code></pre>
+
+<h4 id="getlastopenat-method"><code>getLastOpenAt()</code> method</h4>
+<pre><code>/**
+ * Returns time when last pop openned
+ * return integer
+ */
+BetterJsPop.getLastOpenAt();
+</code></pre>
+
+<h4 id="getlastevent-method"><code>getLastEvent()</code> method</h4>
+<pre><code>/**
+ * Returns last mouse event
+ * return MouseEvent
+ */
+BetterJsPop.getLastEvent();
+</code></pre>
+
+<h4 id="reset-method"><code>reset()</code> method</h4>
+<pre><code>/**
+ * Used to reset all cookies, flags and can fire pop again without refresh current page.
+ */
+BetterJsPop.reset();
+</code></pre>
+
+<h3 id="logger-api"><a name="user-content-logger-api" href="#logger-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Logger API</h3>
+<h4 id="loggerlog-method"><code>Logger.log()</code> method</h4>
+<pre><code>/**
+ * Add a log message to list. If debug mode is enabled, it will log to console immediately.
+ * Support multiple arguments as console.log()
+ */
+BetterJsPop.Logger.log(arguments)
+</code></pre>
+
+<h4 id="loggerprint-method"><code>Logger.print()</code> method</h4>
+<pre><code>/**
+ * Print all log messages to console.
+ */
+BetterJsPop.Logger.print();
+</code></pre>
+
+<h3 id="cookie-api"><a name="user-content-cookie-api" href="#cookie-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Cookie API</h3>
+<h4 id="cookieset-method"><code>Cookie.set()</code> method</h4>
+<pre><code>/**
+ * Set cookie.
+ *
+ * @param string
+ * @param mixed
+ * @param DateTime|integer number of seconds
+ * @param string
+ */
+BetterJsPop.Cookie.set(name, value, expires, path);
+</code></pre>
+
+<h4 id="cookieget-method"><code>Cookie.get()</code> method</h4>
+<pre><code>/**
+ * Return cookie value for speicifc name.
+ * If cookie is not exist, return `null`.
+ *
+ * @param  string
+ * @return string|null
+ */
+BetterJsPop.Cookie.get(name);
+</code></pre>
+
+<h4 id="cookieremove-method"><code>Cookie.remove()</code> method</h4>
+<pre><code>/**
+ * Remove a cookie by name.
+ *
+ * @param string name
+ */
+BetterJsPop.Cookie.remove(name);
+</code></pre>
+
+<h3 id="storage-api"><a name="user-content-storage-api" href="#storage-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Storage API</h3>
+<h4 id="storageisavailable-method"><code>Storage.isAvailable()</code> method</h4>
+<pre><code>/**
+ * Determine if local storage is supported.
+ * If not supported, get/set/remove still work but use cookie insteadof.
+ *
+ * @return boolean
+ */
+BetterJsPop.Storage.isAvailable();
+</code></pre>
+
+<h4 id="storageset-method"><code>Storage.set()</code> method</h4>
+<pre><code>/**
+ * Set storage.
+ *
+ * @param string    name
+ * @param mixed     value
+ */
+BetterJsPop.Storage.set(name, value);
+</code></pre>
+
+<h4 id="storageget-method"><code>Storage.get()</code> method</h4>
+<pre><code>/**
+ * Return storage value for speicifc name.
+ * If storage is not exist, return `null`.
+ *
+ * @param  string       name
+ * @return string|null
+ */
+BetterJsPop.Storage.get(name);
+</code></pre>
+
+<h4 id="storageremove-method"><code>Storage.remove()</code> method</h4>
+<pre><code>/**
+ * Remove a storage by name.
+ *
+ * @param name string
+ */
+BetterJsPop.Storage.remove(name);
+</code></pre>
+
+<h3 id="browser-api"><a name="user-content-browser-api" href="#browser-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Browser API</h3>
+<h4 id="browserversion-property"><code>Browser.version</code> property</h4>
+<pre><code>/**
+ * Return version number of browser
+ * @type integer
+ */
+BetterJsPop.Browser.version;
+</code></pre>
+
+<h4 id="browserlongversion-property"><code>Browser.longVersion</code> property</h4>
+<pre><code>/**
+ * Return long version number of browser
+ * @type string
+ */
+BetterJsPop.Browser.longVersion;
+</code></pre>
+
+<h4 id="browserislinux-property"><code>Browser.isLinux</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isLinux;
+</code></pre>
+
+<h4 id="browseriswin-property"><code>Browser.isWin</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isWin;
+</code></pre>
+
+<h4 id="browserismac-property"><code>Browser.isMac</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isMac;
+</code></pre>
+
+<h4 id="browserisios-property"><code>Browser.isIOS</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isIOS;
+</code></pre>
+
+<h4 id="browserisandroid-property"><code>Browser.isAndroid</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isAndroid;
+</code></pre>
+
+<h4 id="browserismobile-property"><code>Browser.isMobile</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isMobile;
+</code></pre>
+
+<h4 id="browseriswebkit-property"><code>Browser.isWebkit</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isWebkit;
+</code></pre>
+
+<h4 id="browserismozilla-property"><code>Browser.isMozilla</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isMozilla;
+</code></pre>
+
+<h4 id="browserischrome-property"><code>Browser.isChrome</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isChrome;
+</code></pre>
+
+<h4 id="browserisfirefox-property"><code>Browser.isFirefox</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isFirefox;
+</code></pre>
+
+<h4 id="browserissafari-property"><code>Browser.isSafari</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isSafari;
+</code></pre>
+
+<h4 id="browserisie-property"><code>Browser.isIE</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isIE;
+</code></pre>
+
+<h4 id="browserisedge-property"><code>Browser.isEdge</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isEdge;
+</code></pre>
+
+<h4 id="browserisopera-property"><code>Browser.isOpera</code> property</h4>
+<pre><code>/**
+ * @type boolean
+ */
+BetterJsPop.Browser.isOpera;
+</code></pre>
+
+<h4 id="browserversioncompare-method"><code>Browser.versionCompare</code> method</h4>
+<pre><code>/**
+ * Compare current browser version to a version.
+ * Returns -1 if current version is less than target version,
+ * 0 if both are same, and 1 if greater than target version.
+ * @return boolean
+ */
+BetterJsPop.Browser.versionCompare(operator, version);
+</code></pre>
+
+<h4 id="browserpopunderavailable-method"><code>Browser.popunderAvailable</code> method</h4>
+<pre><code>/**
+ * Determine if pop under is vailable in current browser, platform
+ * @return boolean
+ */
+BetterJsPop.Browser.popunderAvailable();
+</code></pre>
+
+<h3 id="event-api"><a name="user-content-event-api" href="#event-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Event API</h3>
+<h4 id="eventbind-method"><code>Event.bind()</code> method</h4>
+<pre><code>/**
+ * Register an event listener to given object
+ *
+ * @param object
+ * @param string
+ * @param function
+ */
+BetterJsPop.Event.bind(obj, event, callback);
+</code></pre>
+
+<h4 id="eventunbind-method"><code>Event.unbind()</code> method</h4>
+<pre><code>/**
+ * Unregister an event listener to given object
+ *
+ * @param object
+ * @param string
+ * @param function
+ */
+BetterJsPop.Event.unbind(object, event, callback);
+</code></pre>
+
+<h4 id="eventgettarget-method"><code>Event.getTarget()</code> method</h4>
+<pre><code>/**
+ * Unregister an event listener to given object
+ *
+ * @param object
+ * @return Document|false
+ */
+BetterJsPop.Event.getTarget(event);
+</code></pre>
+
+<h3 id="utils-api"><a name="user-content-utils-api" href="#utils-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Utils API</h3>
+<h4 id="utilsversioncompare-method"><code>Utils.versionCompare()</code> method</h4>
+<pre><code>/**
+ * Compare two version.
+ *
+ * @param string|integer
+ * @param string|integer
+ * @param string
+ * @param string
+ * @return integer
+ */
+BetterJsPop.Utils.versionCompare(ver1, ver2, operator, separator);
+</code></pre>
+
+<h4 id="utilstime-method"><code>Utils.time()</code> method</h4>
+<pre><code>/**
+ * Returns timestamp for current time or a date.
+ *
+ * @param undefined|DateTime
+ * @return integer milliseconds
+ */
+BetterJsPop.Utils.time(date);
+</code></pre>
+
+<h4 id="utilsisflashenabled-method"><code>Utils.isFlashEnabled()</code> method</h4>
+<pre><code>/**
+ * Determine if flash is enabled.
+ *
+ * @return boolean
+ */
+BetterJsPop.Utils.isFlashEnabled();
+</code></pre>
+
+<h4 id="utilsaddquerystring-method"><code>Utils.addQueryString()</code> method</h4>
+<pre><code>/**
+ * Append a query string to url.
+ *
+ * @return string
+ */
+BetterJsPop.Utils.addQueryString(url, queryString);
+</code></pre>
+
+<h4 id="utilsmerge-method"><code>Utils.merge()</code> method</h4>
+<pre><code>/**
+ * Merge multiple objects
+ *
+ * @return object
+ */
+BetterJsPop.Utils.merge(obj1, obj2, objN);
+</code></pre>
+
+<h4 id="utilsrand-method"><code>Utils.rand()</code> method</h4>
+<pre><code>/**
+ * Returns a random string by length.
+ *
+ * @return string
+ */
+BetterJsPop.Utils.rand(length);
+</code></pre>
+
+<h4 id="utilscreateelement-method"><code>Utils.createElement()</code> method</h4>
+<pre><code>/**
+ * Create an element.
+ *
+ * @param string
+ * @param object|undefined
+ * @param string|undefined
+ * @return Document
+ */
+BetterJsPop.Utils.createElement(tagName, attrs, content);
+</code></pre>
+
+<h4 id="utilsremoveelement-method"><code>Utils.removeElement()</code> method</h4>
+<pre><code>/**
+ * Remove an element
+ *
+ * @param Document
+ */
+BetterJsPop.Utils.removeElement(element);
+</code></pre>
+
+<h4 id="utilsgetparent-method"><code>Utils.getParent()</code> method</h4>
+<pre><code>/**
+ * Find a parent of element - same as jQuery.fn..closest()
+ *
+ * @param Document
+ * @param string
+ * @param integer|undefined
+ */
+BetterJsPop.Utils.getParent(element, parentTagName, deep);
+</code></pre>
+
+<h4 id="utilsutimeout-method"><code>Utils.uTimeout()</code> method</h4>
+<pre><code>/**
+ * Create unique setTimeout.
+ *
+ * @param string
+ * @param function
+ * @param integer
+ */
+BetterJsPop.Utils.uTimeout(key, callback, milliseconds);
+</code></pre></article></body></html>

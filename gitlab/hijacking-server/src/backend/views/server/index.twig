@@ -1,0 +1,37 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title='服务器列表' %}
+
+{% block content %}
+  <h2></h2>
+  <hr />
+
+  {{ widget('yii\\grid\\GridView', {
+    'dataProvider': dataProvider,
+    'columns' : {
+      0:{
+        'attribute':'id',
+      },
+      1:{
+        'attribute':'name',
+      },
+      2:{
+        'attribute':'ip',
+      },
+      3:{
+        'attribute':'status',
+      },
+      4:{
+        'attribute':'active','value':model.showActive(),'format':'raw',
+      },
+      6:{
+        'attribute':'last_tasklist',
+        'format':['date', 'yyyy-MM-dd H:i:s'],
+      },
+      5:{'class' : '\\common\\extensions\\GridActionColumn',
+       'template' : '{view}   {update}   {switch}   {refresh}',
+       'header':'操作',
+       }
+    }
+  }) }}
+
+{% endblock %}

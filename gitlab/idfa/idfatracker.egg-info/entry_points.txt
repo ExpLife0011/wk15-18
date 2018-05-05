@@ -1,0 +1,3 @@
+[console_scripts]
+it = idfatracker.cli:main
+

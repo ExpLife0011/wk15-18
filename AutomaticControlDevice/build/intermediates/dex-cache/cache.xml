@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/yeah/Documents/android project/AutomaticControlDevice/app/libs/ACache.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b0d99230d4c6fb88a5e5fbe9309f8a8d8ee57ce7">
+        <dex dex="/Users/yeah/Documents/android project/AutomaticControlDevice/app/build/intermediates/transforms/dex/debug/folders/1000/2/ACache_cb06aa684d6328bde31e77f115910685ec841980/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yeah/Documents/android project/AutomaticControlDevice/app/libs/fastjson-1.2.9.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3a6e5f623dccd587c3d3cffd4fde80261f326715">
+        <dex dex="/Users/yeah/Documents/android project/AutomaticControlDevice/app/build/intermediates/transforms/dex/debug/folders/1000/2/fastjson-1.2.9_4db0a91f65606c4e6e9b9f9d0a0a93f62846bcbd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yeah/Documents/android project/AutomaticControlDevice/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="eca5d66c6aeab22098654ccc74899db9db5a13ee">
+        <dex dex="/Users/yeah/Documents/android project/AutomaticControlDevice/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9695f0dc0ee13f4708863cf54191416724299307/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yeah/Documents/android project/AutomaticControlDevice/app/libs/BaiduLBS_Android.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="70acb0a50ffe97bb690e982c272466a92797c9f6">
+        <dex dex="/Users/yeah/Documents/android project/AutomaticControlDevice/app/build/intermediates/transforms/dex/debug/folders/1000/2/BaiduLBS_Android_8e137a3fd3ef71267534ca254aa0211457661eff/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yeah/.gradle/caches/modules-2/files-2.1/org.simpleframework/simple-xml/2.7.1/dd91fb744c2ff921407475cb29a1e3fee397d411/simple-xml-2.7.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dd91fb744c2ff921407475cb29a1e3fee397d411">
+        <dex dex="/Users/yeah/Documents/android project/AutomaticControlDevice/app/build/intermediates/transforms/dex/debug/folders/1000/10/simple-xml-2.7.1_cf3f484e205d8a6689aab34bb72eb3ef09d72f42/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yeah/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-simplexml/2.1.0/a71c37fa341165df2c61ba93f549c4ceeb98d6c8/converter-simplexml-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a71c37fa341165df2c61ba93f549c4ceeb98d6c8">
+        <dex dex="/Users/yeah/Documents/android project/AutomaticControlDevice/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-simplexml-2.1.0_57f7df550cd61721ef95d706b40fa0f950c3bf3b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yeah/Documents/android project/AutomaticControlDevice/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/yeah/Documents/android project/AutomaticControlDevice/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_26ccbf6cbe04cc9547ece869fea289ef1ef0df18/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yeah/Documents/android project/AutomaticControlDevice/app/libs/ksoap2-android-assembly-3.2.0-jar-with-dependencies.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="28d8f13fdec2fe5de24af98b7131c858c266bbea">
+        <dex dex="/Users/yeah/Documents/android project/AutomaticControlDevice/app/build/intermediates/transforms/dex/debug/folders/1000/2/ksoap2-android-assembly-3.2.0-jar-with-dependencies_1fde063e3debabdf70e401a483db44d86c9d996a/classes.dex" />
+    </item>
+
+</items>

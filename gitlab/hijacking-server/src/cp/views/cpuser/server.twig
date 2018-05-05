@@ -1,0 +1,33 @@
+{% set menu_name = "managers" %}
+{% set sidebar_name = "服务器" %}
+{% extends '@view/layouts/base.twig' %}
+{% set title="服务器" %}
+{% block title_info %}
+<title>服务器</title>
+{% endblock %}
+{% block body %}
+<div class="content">
+    <h3>服务器</h3>
+    {{
+    widget('\\yii\\grid\\GridView', {            
+            'id':'app-grid', 
+            'dataProvider':dataProvider, 
+            'columns':{
+                0:'id',
+                1:'sid',
+                3:{
+                    'attribute':'服务器','value':model.getServerName(),
+                }, 
+                4:{
+                    'attribute':'业务','value':model.getAllBusinesses(),
+                },
+                5:{'class' : '\\common\\extensions\\GridActionColumn',
+                   'template' : '{server-view}',
+                   'header':'操作',
+               }
+                
+}})
+
+}}
+</div>
+{% endblock %}

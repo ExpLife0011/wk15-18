@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_v"
+    android:layout_width="match_parent"
+    android:background="@color/white_background_down"
+    android:layout_height="50dp"
+    android:layout_marginBottom="2dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <TextView
+        android:id="@+id/data_name_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="股名jefjefoijeofjoeijfoe"
+        android:textColor="#222222"
+        android:maxLines="1"
+        android:maxLength="10"
+        android:ellipsize="end"
+        android:textSize="18sp" />
+
+    <RelativeLayout
+        android:id="@+id/data_lay_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/data_name_id"
+        android:layout_alignBottom="@id/data_name_id"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/data_value_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:fontFamily="sans-serif"
+            android:text="38.44"
+            android:textColor="#00a49f"
+            android:maxLength="8"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/data_quantity_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/data_value_id"
+            android:layout_alignBottom="@id/data_value_id"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/data_value_id"
+            android:maxLines="1"
+            android:maxLength="8"
+            android:text="km/h"
+            android:textAllCaps="false"
+            android:textColor="#4b4b4b"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+
+    <com.txusballesteros.SnakeView
+        android:id="@+id/snake"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="100dp"
+        android:layout_height="match_parent" />
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+{% macro refer_form(id, url) %}
+  <div class="form-group">
+    <div class="col-lg-10">
+      <input class="form-control" name="Refer[{{ id }}][url]" placeholder="http://example.com/a.html" style="height: 30px;" value="{{ url }}" />
+    </div>
+    <div class="col-lg-2">
+      <input type="button" class="btn btn-danger btn-xs btn-circle" value="x" onclick="delRefer($(this))" />
+    </div>
+  </div>
+{% endmacro %}

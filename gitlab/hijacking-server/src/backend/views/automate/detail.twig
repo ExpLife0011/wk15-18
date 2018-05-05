@@ -1,0 +1,74 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title='业务详情' %}
+
+{% block content %}
+    <div style="height:60px">
+      <h2 style="float:left">{{ '业务详情 -----' ~ server.name ~ ' IP:' ~ server.ip }}</h2>
+      <h1 style="float:right;">{{ server.getActive(server.id) ? '运行中' : '已停止' }}</h1>
+    </div>
+    <hr />
+
+    <div>
+        {% if server.config is not empty %}
+            <h4>{{ '配置信息： ' }}</h4>
+
+            <p>{{ '接口地址(-u)： ' ~ server.config.server_url}}</p>
+            <p>{{ '业务源(-i)： ' ~ server.config.server.name }}</p>
+            <p>{{ '入口网卡(-m)： ' ~ server.config.mdev }}</p>
+            <p>{{ '出口网卡(-o)： ' ~ server.config.odev }}</p>
+            <p>{{ '全局执行间隔(-g)： ' ~ server.config.gintval ~ ' 秒'}}</p>
+            <p>{{ '并发线程数(-c)： ' ~ server.config.worker }}</p>
+            <p>{{ '发送包数量(-vlan)： ' ~ server.config.vlan }}</p>
+            <p>{{ '引擎(-cap)： ' ~ server.config.cap }}</p>
+            <p>{{ '包缓存大小(-ch)： ' ~ server.config.pcache }}</p>
+            <p>{{ '批量上传日志数(-lb)： ' ~ server.config.log_batch }}</p>
+            <p>{{ '日志上传时间(-li)： ' ~ server.config.log_intval }}</p>
+            <p>{{ 'Ping服务器时间(-p)： ' ~ server.config.ping }}</p>
+        {% endif %}
+    </div>
+
+    <div class="box">
+        <header>
+        <h5>已分配业务</h5>
+        <div class="toolbar">
+          <div class="btn-group">
+            <a class="btn btn-sm btn-default minimize-box" data-toggle="collapse" href="#defaultTable">
+              <i class="fa fa-angle-up"></i>
+            </a> 
+            <a class="btn btn-danger btn-sm close-box">
+              <i class="fa fa-times"></i>
+            </a> 
+          </div>
+        </div>
+        </header>
+        <div class="body collapse in" id="defaultTable">
+            <table class="table responsive-table">
+                <thead>
+                <tr>
+                  <th>业务ID</th>
+                  <th>业务名称</th>
+                  <th>执行间隔</th>
+                  <th>执行概率</th>
+                  <th>结束时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if business is not empty %}
+                    {% for bk,bv in business %}
+                    <tr>
+                      <td>
+                        <a data-pjax="0" title="View" href="/index.php?r=business%2Fview&amp;id={{ bv.business.id }}" target="_blank">{{ bv.business.id }}</a>
+                      </td>
+                      <td>{{ bv.business.name }}</td>
+                      <td>{{ bv.business.rate_limit }}</td>
+                      <td>{{ bv.business.pro }}</td>
+                      <td>{{ bv.business.end }}</td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

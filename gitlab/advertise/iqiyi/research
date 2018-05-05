@@ -1,0 +1,103 @@
+var b = {
+                adPlayerId: "a",
+                uaaUserId: "u",
+                cupidUserId: "i",
+                passportId: "p",
+                requestId: "s",
+                timestamp: "h",
+                encryption: {
+                    name: "e",
+                    type: "object",
+                    child: {
+                        episodeId: "b",
+                        albumId: "l",
+                        channelId: "k",
+                        cuepointList: {
+                            name: "q",
+                            type: "array",
+                            child: {
+                                cuepointType: "ct",
+                                adZoneId: "zi",
+                                startTime: "st",
+                                sequenceId: "si",
+                                requestAdDuration: "rd",
+                                keyword: "kw",
+                                limit: "lm",
+                                skip: "sk"
+                            }
+                        },
+                        referrer: "r",
+                        offline: "o",
+                        mobileKey: "t",
+                        userAgent: "m",
+                        continuingVideoPlayedCount: "n",
+                        continuingVideoPlayedDuration: "y",
+                        continuingAdPlayedDuration: "w",
+                        isVIP: "v",
+                        passportCookie: "pc",
+                        network: "nw",
+                        needPolicy: "po",
+                        encryptionVersion: "pv",
+                        isPreload: "pr",
+                        checkCode: "cc",
+                        checkCodeMethodVersion: "mv",
+                        url: "ul",
+                        videoPlayedDurationInDay: "cd",
+                        adPlayedDurationInDay: "ca",
+                        midrollPointsPlayedInView: "nm",
+                        lastRollCompleteInterval: "in",
+                        lastMidrollRequestTime: "lm",
+                        clientVersion: "cv",
+                        sdkVersion: "sv",
+                        supportIQiyiTracking: "gt",
+                        supportEmptyTracking: "ea",
+                        searchQuery: "sq",
+                        prerollOrderItemIds: "poi",
+                        pauseRequestTimes: "pt",
+                        playSource: "ps",
+                        requestIndex: "rix",
+                        videoEventId: "veid"
+                    }
+                }
+            };
+
+
+
+
+
+g.generateRequestId = function() {
+                var e = this.view.videoEventId
+                  , n = [e, t.now()];
+                return p(n.join(""))
+            }
+
+
+
+
+
+encryptionParam
+------------------------------------------------
+adPlayedDurationInDay:0
+clientVersion:"4.1.1"
+continuingAdPlayedDuration:0
+continuingVideoPlayedCount:0
+continuingVideoPlayedDuration:0
+
+cuepointList:Array(1)
+
+encryptionVersion:""
+episodeId:"694939000"          // videoQipuId || tvId
+isPreload:0
+isVIP:0
+needPolicy:1
+passportCookie:""
+pauseRequestTimes:0
+playSource:0
+sdkVersion:"3.21.0-ares3"
+supportEmptyTracking:1
+supportIQiyiTracking:1
+url:"http://www.iqiyi.com/v_19rr6ykw7o.html"
+
+
+videoEventId:"cb4cb889e18a72f0a570daa1a4d84b7a" md5(episodeId + "IQIYI" + (new Date()).getTime())
+videoPlayedDurationInDay:7        // played video in today

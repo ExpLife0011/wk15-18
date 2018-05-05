@@ -1,0 +1,198 @@
+{% set menu_name = "business" %}
+{% set sidebar_name = "新建批量业务规则" %}
+{% extends '@view/layouts/base.twig' %}
+{% set title = '添加业务规则' %}
+
+{% from 'src_url_form.twig' import src_url_form %}
+{% from 'target_form.twig' import target_form %}
+{% from 'refer_form.twig' import refer_form %}
+{% block body %}
+<style>
+  .content .col-lg-8{
+    float:none;
+  }
+  .form-control{
+    width:100%;
+  }
+  .col-sm-10 .form-control{
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  }
+  .select2-container.form-control {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  .btn-metis-3 {
+    color: #fff;
+    background: #fbb450;
+    border-color: #f89406;
+  }
+  .btn-metis-3:hover{
+    background: #f89406;
+  }
+</style>
+
+<div class="content">
+    <h2>{{ model.name ? model.name : "新建批量业务规则" }}</h2>
+    <hr />
+  <div class="col-lg-8">
+    <div class="row">
+      {% set form=ActiveForm.begin({id:'business-form','options':{'enctype':'multipart/form-data'},
+                                    type: constant('kartik\\widgets\\ActiveForm::TYPE_HORIZONTAL' ),
+                                    formConfig: {labelSpan : 2,
+                                                 deviceSize : constant('kartik\\widgets\\ActiveForm::SIZE_SMALL')}
+                                    }) %}
+      {{ form.field(model, 'name')|raw }}
+      {{ form.field(model, 'gid').widget('kartik\\widgets\\Select2', {
+        data : groupList,
+        options : {
+          'id' : 'gid',
+          placeholder : 'Select...'},
+        pluginOptions : {
+          allowClear : true
+        }
+      })|raw }}
+      <div class="form-group">
+        <label for="business-name" class="col-sm-2 control-label">源地址</label>
+        <div class="col-sm-10">
+          <input type="file" name="SrcUrl" id="file" />
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="business-name" class="col-sm-2 control-label">目标</label>
+        <div class="col-sm-10">
+          <input type="button" class="btn btn-metis-3" value="增加目标" onclick="addTarget()" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="business-name" class="col-sm-2 control-label">&nbsp;</label>
+        <div class="col-sm-10" id="targets">
+          {% if model.targets|length > 0 %}
+            {% for target in model.targets %}
+              {{ target_form(target.id, target.type, target.content) }}
+            {% endfor %}
+          {% else %}
+            {{ target_form('n0') }}
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="business-name" class="col-sm-2 control-label">Referer</label>
+        <div class="col-sm-10">
+          <input type="button" class="btn btn-metis-3" value="增加Referer" onclick="addRefer()" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="business-name" class="col-sm-2 control-label">&nbsp;</label>
+        <div class="col-sm-10" id="refers">
+          {% if model.refers|length > 0 %}
+            {% for refer in model.refers %}
+              {{ refer_form(refer.id, refer.url) }}
+            {% endfor %}
+          {% else %}
+            {{ refer_form('n0') }}
+          {% endif %}
+        </div>
+      </div>
+
+      {{ form.field(model, 'priority')|raw }}
+      {{ form.field(model, 'blackwords')|raw }}
+      {{ form.field(model, 'rate_limit', {
+        'addon' : {'append' : {'content' : '秒'},
+                   'groupOptions' : { 'class' : 'col-sm-2'}}
+      })|raw }}
+      {{ form.field(model, 'pro', {
+        'addon' : {'append' : {'content' : '%'},
+                   'groupOptions' : { 'class' : 'col-sm-2'}}
+      })|raw }}
+      {{ form.field(model, 'end').widget('kartik\\widgets\\DateTimePicker', {
+      })|raw }}
+      {{ form.field(model, 'status').widget('kartik\\widgets\\SwitchInput')|raw }}
+      {{ form.field(model, 'shield').widget('kartik\\widgets\\SwitchInput')|raw }}
+      <div class="form-group">
+        <label for="business-name" class="col-sm-2 control-label">&nbsp;</label>
+        <div class="col-sm-4">
+          <input type='submit' value='提交' class='btn btn-large btn-primary' /> 
+        </div>
+      </div>
+      {{ void(form.end()) }}
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block page_scripts %}
+  <script type="text/javascript">
+   var lastSrcId={{ model.srcUrls|length }};
+
+   var srcUrlForm=new String({{ src_url_form('idRep')|json_encode()|raw }});
+
+   function addSrcUrl() {
+     lastSrcId++;
+     $('#src_urls').append(srcUrlForm.replace(/idRep/g,'n'+lastSrcId));
+   }
+
+   function delSrcUrl(button) {
+     button.parent('div').parent('div').detach();
+   }
+
+   var lastTargetId={{ model.targets|length }};
+   var targetForm=new String({{ target_form('idRep')|json_encode()|raw }});
+
+   function addTarget() {
+     lastTargetId++;
+     $('#targets').append(targetForm.replace(/idRep/g,'n'+lastTargetId));
+   }
+   function delTarget(button) {
+     button.parent('div').parent('div').parent('div').detach();
+   }
+
+   var lastReferId={{ model.refers|length }};
+
+   var referForm=new String({{ refer_form('idRep')|json_encode()|raw }});
+
+   function addRefer() {
+     lastReferId++;
+     $('#refers').append(referForm.replace(/idRep/g,'n'+lastReferId));
+   }
+
+   function delRefer(button) {
+     button.parent('div').parent('div').detach();
+   }
+   
+  </script>
+      <script>
+        $(document)
+		.on('focus.textarea', '.autoExpand', function(){
+			var savedValue = this.value;
+			this.value = '';
+			this.baseScrollHeight = this.scrollHeight;
+			this.value = savedValue;
+		})
+		.on('input.textarea', '.autoExpand', function(){
+			var minRows = this.getAttribute('data-min-rows')|0,
+				rows;
+			this.rows = minRows;
+			rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+			this.rows = minRows + rows;
+		});
+      </script>
+{% endblock %}

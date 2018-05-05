@@ -1,0 +1,43 @@
+ {% extends '@view/layouts/main.twig' %}
+{% set title='查看服务器' %}
+
+{% block content %}
+<h2>{{ model.name }}</h2>
+ <div class="box">
+                  <header>
+                    <h5>已分配业务</h5>
+                    <div class="toolbar">
+                      <div class="btn-group">
+                        <a class="btn btn-sm btn-default minimize-box" data-toggle="collapse" href="#defaultTable">
+                          <i class="fa fa-angle-up"></i>
+                        </a> 
+                        <a class="btn btn-danger btn-sm close-box">
+                          <i class="fa fa-times"></i>
+                        </a> 
+                      </div>
+                    </div>
+                  </header>
+                  <div class="body collapse in" id="defaultTable">
+                    <table class="table responsive-table">
+                      <thead>
+                        <tr>
+                          <th>业务ID</th>
+                          <th>业务名称</th>
+                          <th>执行间隔</th>
+                          <th>执行概率</th>
+                          <th>结束时间</th>
+                          <th>源地址</th>
+                          <th>目标</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{ widget('yii\\widgets\\ListView', {
+    'dataProvider' : businessProvider,
+    'itemView' : 'group_business.twig',
+    'layout' : '{items}'
+  }) }}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+{% endblock %}

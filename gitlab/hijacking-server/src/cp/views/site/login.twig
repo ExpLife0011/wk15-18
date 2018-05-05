@@ -1,0 +1,61 @@
+
+{{ this.beginPage() }}
+{{ void(appasset.register(this)) }}
+<!DOCTYPE html>
+<html lang="{{ app.language }}" class="no-js">
+  <head>
+    <meta charset="{{ app.charset }}">
+    {% block title_info %}
+    <title>后台管理</title>
+    {% endblock %}
+    <link rel="stylesheet" href="/css/main.css" type="text/css" />
+    {{ HTML.csrfMetaTags()|raw }}
+    {{ this.head() }}
+    <style type="text/css">
+    .navbar-inverse{ background-color: #DDDDE2; border-color:#9898A7;}
+    .navbar-inverse .navbar-brand{ color:#646475;}
+    #main-menu {
+      background: #f3f3f5;
+      border-bottom: 0px;
+      position: relative;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #bcbcc6;
+      z-index: 1;
+    }
+    </style>
+  </head>
+  <body class="">
+
+    {{ this.beginBody() }}
+    {% block body %}
+    <div class="site-login" style="align:center">
+
+    <div class="row">
+        <div class="col-lg-5">
+          {% set form = ActiveForm.begin({'id':'create-form', 'options' : {'class' : 'form-signin'}}) %}
+          {{ form.field(model, 'username')|raw }}
+          {{ form.field(model, 'password').passwordInput()|raw }}
+          {{ form.field(model,'verifyCode').widget('\\yii\\captcha\\Captcha',{"template":'<div class="row"><div class="col-lg-3">{image}</div></div><div class="row"><div class="col-lg-6">{input}</div></div>'})|raw }}
+          <div class="form-group">
+                <label for="loginform-verifycode" class="control-label col-sm-3"></label>
+                 <input type='submit' value='Sign in' class='btn btn-large btn-primary' /> 
+            </div>
+          {{ void(form.end()) }}
+        </div>
+      </div>
+    </div><!-- /container -->
+    {% endblock %}
+    <footer class="footer">
+        <div class="">
+        <p class="pull-left">&copy; My Company {{ "now"|date("Y") }} </p>
+        <p class="pull-right">goumin.com</p>
+        </div>
+    </footer>
+    {{ this.endBody() }}
+    {% block page_scripts %}
+    {% endblock %}
+  </body>
+</html>
+{{ this.endPage() }}
+
+

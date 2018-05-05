@@ -1,0 +1,8 @@
+/result
+/result/suanming/suan_machine/
+/bc/result/suanming/suan_machine
+/bc/result/suanming/suan_machine
+/bc/result/suan
+/bc/result/sm
+/bc/result/sms
+/gg

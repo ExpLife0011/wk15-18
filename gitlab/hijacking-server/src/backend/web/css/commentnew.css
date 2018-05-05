@@ -1,0 +1,412 @@
+    p{
+        margin-top: 8px;
+        margin-bottom: 8px;
+        white-space: pre-wrap;
+    }
+    button{
+        cursor: pointer;
+    }
+    ul,li{
+        list-style: none;
+        padding: 0;
+        margin: 0; 
+    }
+    h1,hr{
+        width: 1000px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    hr{
+        width: 600px;
+        height: 0;
+        border-top: 2px solid #000;
+        border-left: 200px solid rgba(0,0,0,0.2);
+        border-right: 200px solid rgba(0,0,0,0.2);
+    }
+    tr,td{
+        border: 1px solid #000;
+    }
+    td{
+        padding-left: 5px;
+    }
+    tr td:nth-of-type(1){
+        width: 40%;
+    }
+    h2{
+        width: 1000px;
+        margin: auto;
+    }
+    /**/
+    .bigBox{
+        width: 1000px;
+        height: 200px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .smallBox{
+        width: 30%;
+        height: 100%;
+        border: 1px solid #000;
+        float: left;
+    }
+    .smallBox tr:nth-of-type(1){
+        background:#cccccc;
+    }
+    .smallBox tr:nth-of-type(2),.smallBox tr:nth-of-type(4),.smallBox tr:nth-of-type(6){
+        background:#eeeeee;
+    }
+    .right{
+        float: right;
+        width: 65%;
+        height: 100%;
+    }
+    .right li:nth-of-type(1){
+        height: 30px;
+        line-height: 30px;
+        font-weight: bold;
+    }
+    .right li p{
+        width: 100%;
+        height: 120px;
+        word-wrap: break-word;
+        overflow: auto;
+        margin: 0;
+        padding: 0;
+    }
+    .right li:nth-of-type(3){
+        width: 100%;
+        height: 50px;
+    }
+    .right li button{
+        width: 120px;
+        height: 30px;
+        font-size: 16px;
+        border: 1px solid #000;
+        box-shadow: 3px 3px 3px; 
+        margin-top: 10px;
+    }
+    .right li button:nth-of-type(1){
+        margin-right: 70px;
+    }
+
+    /*下*/
+    .down{
+        width: 1000px;
+        height: 140px;
+        margin: auto;
+        box-sizing:border-box;
+        overflow: hidden;
+        background: #ccc;
+        border: 2px solid #000;
+        padding-left: 10px;
+        margin-bottom: 20px;
+    }
+    .down_left{
+        width: 10%;
+        height: 100%;
+        float: left;
+    }
+    .down_left p{
+        font-weight: bold;
+    }
+    .down_bettown{
+        float: left;
+        width: 65%;
+        margin-top: 26px;
+    }
+    .down_right{
+        width: 25%;
+        height: 100%;
+        float: left;
+        margin-top: 26px;
+        text-align: center;
+    }
+
+
+    .down_last{
+        width: 1000px;
+        height: 200px;
+        margin: auto;
+        box-sizing:border-box;
+        border: 2px solid #000;
+        overflow: hidden;
+        margin-top: 30px;
+        padding-left: 10px;
+    }
+    .down_last .last_up{
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-weight: bold;
+    }
+    .down_last .last_up li{
+        float: left;
+    }
+    .down_last .last_up li:nth-of-type(1){
+        width: 20%;
+    }
+    .down_last .last_up li:nth-of-type(2){
+        width: 45%;
+    }
+    .down_last .last_up li:nth-of-type(3){
+        width: 35%;
+    }
+    .down_last .down_left{
+        width: 20%;
+        padding-top: 10px;
+        font-weight: bold;
+    }
+    .down_last .down_left li{
+        height: 40%;
+        text-align: center;
+    }
+    .down_last .down_bettown{
+        width: 60%;
+        margin: 0;
+        height: 100%;
+    }
+    .down_last .down_bettown .bettown_up{
+        height: 35%;
+    }
+
+
+    .last_right{
+        width: 20%;
+        float: left;
+        position: relative;
+    }
+    .last_right button{
+        width: 120px;
+        height: 30px;
+        font-size: 16px;
+        border: 1px solid #000;
+        box-shadow: 3px 3px 3px;
+        position: absolute;
+        top: 100px;
+        right: 20px; 
+    }
+
+
+
+
+    /*隐藏区域*/
+    #over{
+        box-sizing:border-box;
+        width: 500px;
+        height: 320px;
+        border: 2px solid #000;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        background:#fff;
+        z-index: 100;
+        overflow: hidden;
+        display: none;
+        box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.7);
+        transition: all 1000s linear;
+    }
+    .over_up{
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+        border-bottom: 2px solid #000;
+        padding-left:10px; 
+        font-weight: bold;
+    }
+    
+    .over_bettown{
+        width: 100%;
+        height: 223px;
+    }
+    #over_form{
+        width: 400px;
+        height: 150px;
+        background:#ccc;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    #over_form textarea{
+        width: 400px;
+        height: 155px;
+        background:#ccc;
+        margin: auto;
+    }
+    .up_img{
+        width: 400px;
+        margin: auto;
+        height: 50px;
+    }
+    .up_img button{
+        margin-top: 15px;
+        float: left;
+        margin-right: 5px;
+    }
+    .up_img div{
+        float: left;
+        width: 80px;
+        height: 40px;
+        border: 1px solid #ccc;
+        margin-top: 5px;
+        line-height: 40px;
+        text-align: center;
+    }
+    .button{
+        width: 68%;
+        height: 60px;
+        margin: auto;
+        position: relative;
+    }
+    .button button{
+        width: 60px;
+        height: 30px;
+        font-size: 16px;
+        background:#fff;
+        border: 1px solid #000;
+        box-shadow: 3px 3px 3px;
+        margin-top: 15px;
+    }
+    .button button:nth-of-type(2){
+        width: 120px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    #cancel{
+        width: 60px;
+        height: 30px;
+        font-size: 16px;
+        background:#fff;
+        border: 1px solid #000;
+        box-shadow: 3px 3px 3px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .over_down{
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+        border-top: 2px solid #000;
+        padding-left:10px; 
+        font-weight: bold;
+    }
+
+    
+    /*2*/
+    #over_two{
+        box-sizing:border-box;
+        width: 500px;
+        height: 360px;
+        border: 2px solid #000;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        background:#fff;
+        z-index: 100;
+        overflow: hidden;
+        display: none;
+        box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.7);
+
+    }
+    #over_two .over_bettown{
+        height: 270px;
+    }
+    .two_up{
+        width: 400px;
+        height: 50px;
+        line-height: 50px;
+        margin: auto;
+    }
+    .two_up_left{
+        width: 30%;
+        text-align: center;
+        float: left;
+    }
+    .two_up_right{
+        float: left;
+
+    }
+    .two_up_right div:nth-of-type(1){
+        width: 178px;
+        height: 28px;
+        border: 2px solid #000;
+        position: relative;
+        margin-top: 11px;
+        text-align: center;
+        line-height: 25px;
+    }
+    .two_up_right .input{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .over_two{
+        width: 400px;
+        height: 150px;  
+        margin: auto;
+        margin-top: 10px;
+    }
+    .two_down_left{
+        width: 30%;
+        text-align: center;
+        float: left;
+        padding-top: 10px;
+    }
+    .two_down_right{
+        width: 69%;
+        height: 100%;
+        float: left;
+        border: 2px solid #000;
+
+    }
+    .button_two{
+        width: 36%;
+        height: 60px;
+        margin: auto;
+    }
+    .button_two button{
+        width: 60px;
+        height: 30px;
+        font-size: 16px;
+        background:#fff;
+        border: 1px solid #000;
+        box-shadow: 3px 3px 3px;
+        margin-top: 15px;
+    }
+    .button_two button:nth-of-type(1){
+        margin-right: 50px;
+    }
+
+    
+    /*3*/
+    #over_three{
+        box-sizing:border-box;
+        width: 500px;
+        height: 321px;
+        border: 2px solid #000;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        background:#fff;
+        z-index: 100;
+        overflow: hidden;
+        display: none;
+        box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.7);
+
+    }
+    .over_form{
+        width: 400px;
+        height: 150px;
+        border: 2px solid #000;
+        margin: auto;
+        margin-top: 15px;
+    }

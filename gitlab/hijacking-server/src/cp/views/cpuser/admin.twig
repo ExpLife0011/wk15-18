@@ -1,0 +1,36 @@
+{% set menu_name = "managers" %}
+{% set sidebar_name = "用户列表" %}
+{% extends '@view/layouts/base.twig' %}
+{% set title="用户列表" %}
+{% block title_info %}
+<title>用户</title>
+{% endblock %}
+{% block body %}
+<div class="content">
+    <h3>用户</h3>
+    {{
+    widget('\\yii\\grid\\GridView', {            
+            'id':'app-grid', 
+            'dataProvider':data, 
+            'columns':{
+                0:'id',
+                1:'username',
+                2:'email',
+                3:{
+                    'attribute':'created_at',
+                    'format':['date', 'Y-m-d'],
+                }, 
+                4:{
+                    'attribute':'status',
+                    'label':'用户状态:0表示被禁用',
+                },
+                5:{
+                    'class':'\\common\\extensions\\GridActionColumn',
+                    'template':'{update}',
+                },
+                
+}})
+
+}}
+</div>
+{% endblock %}

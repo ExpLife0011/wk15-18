@@ -1,0 +1,54 @@
+{% set menu_name = "managers" %}
+{% set sidebar_name = "服务器" %}
+{% extends '@view/layouts/base.twig' %}
+
+{% block body %}
+<div class="content">
+<h2>{{ model.name }}</h2>
+ <div class="box">
+                  <header>
+                    <h5>已分配业务</h5>
+                    <div class="toolbar">
+                      <div class="btn-group">
+                        <a class="btn btn-sm btn-default minimize-box" data-toggle="collapse" href="#defaultTable">
+                          <i class="fa fa-angle-up"></i>
+                        </a> 
+                        <a class="btn btn-danger btn-sm close-box">
+                          <i class="fa fa-times"></i>
+                        </a> 
+                      </div>
+                    </div>
+                  </header>
+                  <div class="body collapse in" id="defaultTable">
+                    <table class="table responsive-table">
+                      <thead>
+                        <tr>
+                          <th>业务ID</th>
+                          <th>业务名称</th>
+                          <th>执行间隔</th>
+                          <th>执行概率</th>
+                          <th>结束时间</th>
+                          <th>源地址</th>
+                          <th>目标</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% if business is not empty %}
+                      {% for bv in business %}
+                        <tr>
+                            <td>{{ bv.id }}</td>
+                            <td>{{ bv.name }}</td>
+                            <td>{{ bv.rate_limit }}</td>
+                            <td>{{ bv.pro }}</td>
+                            <td>{{ bv.end }}</td>
+                            <td>{% for k,v in bv.srcUrls %}{{ v.url }}<br />{% endfor %}</td>
+                            <td>{% for k,v in bv.targets %}{{ v.content }}<br />{% endfor %}</td>
+                      </tr>
+                      {% endfor %}
+                      {% endif %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+</div>
+{% endblock %}

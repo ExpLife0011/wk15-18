@@ -1,0 +1,44 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title='PPPOE帐号管理' %}
+
+{% block content %}
+
+<h2>{{ "添加PPPOE帐号" }}</h2>
+  <hr />
+
+
+    <div class="row">
+       <div class="col-lg-6">
+      {% set form = ActiveForm.begin({
+        id : 'server-form',
+        type: constant('kartik\\widgets\\ActiveForm::TYPE_HORIZONTAL' ),
+        formConfig: {labelSpan : 2,
+                     deviceSize : constant('kartik\\widgets\\ActiveForm::SIZE_SMALL')}
+      }) %}
+      {{ form.field(model, 'account')|raw }}
+      <div class="form-group">
+        <label for="business-name" class="col-sm-2 control-label">&nbsp;</label>
+        <div class="col-sm-4">
+          <input type='submit' value='提交' class='btn btn-large btn-primary' /> 
+        </div>
+      </div>
+      {{ void(form.end) }}
+    </div>
+</div>
+    <h2>PPPOE帐号列表</h2>
+  <hr />
+  
+
+  {{ widget('yii\\grid\\GridView', {
+    'dataProvider': dataProvider,
+    'columns' : [
+      'id',
+      'account',
+      {'attribute':'created_at','format':['date', 'yyyy-MM-dd H:i:s']},
+      {'class' : '\\common\\extensions\\GridActionColumn',
+       'template' : '{delpppoe} {updatepppoe}'
+       }
+    ]
+  }) }}
+
+{% endblock %}

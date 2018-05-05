@@ -1,0 +1,91 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title="操作行为记录列表" %}
+
+{% block content %}
+    <link rel="stylesheet" href="/css/todaynews.css">
+    <link rel="stylesheet" href="/css/record.css">
+    <h2></h2>
+    <hr />
+
+    <div id="form_two">
+      {% set form = ActiveForm.begin({
+          id : 'list-form',
+          type: constant('kartik\\widgets\\ActiveForm::TYPE_HORIZONTAL' ),
+          'method': 'get','action':'/index.php?r=behavior/index',
+          formConfig: {labelSpan : 1,
+              deviceSize : constant('kartik\\widgets\\ActiveForm::SIZE_SMALL')}
+      }) %}
+
+      {{ form.field(model, 'sid').widget('kartik\\widgets\\Select2', {
+          data : serverList,
+          options : {
+            'id' : 'sid',
+            placeholder : 'Select...'},
+          pluginOptions : {
+            allowClear : true
+          }
+      })|raw }}
+      {{ form.field(model, 'bid').widget('kartik\\widgets\\Select2', {
+          data : businessList,
+          options : {
+            'id' : 'bid',
+            placeholder : 'Select...'},
+          pluginOptions : {
+            allowClear : true
+          }
+      })|raw }}
+      {{ form.field(model, 'gid').widget('kartik\\widgets\\Select2', {
+          data : groupList,
+          options : {
+            'id' : 'gid',
+            placeholder : 'Select...'},
+          pluginOptions : {
+            allowClear : true
+          }
+      })|raw }}
+      {{ form.field(model, 'cdate_start').widget('kartik\\widgets\\DateTimePicker')|raw }}
+      {{ form.field(model, 'cdate_end').widget('kartik\\widgets\\DateTimePicker')|raw }}
+      <input type='submit' value='查看' class='look btn btn-large btn-primary' />
+      {{ void(form.end()) }}
+    </div>
+
+    <div style="overflow:auto">
+        {{ widget('yii\\grid\\GridView', {
+            'dataProvider': dataProvider,
+            'columns' : {
+                0:{
+                    'attribute':'created_at',
+                    'format':['date', 'yyyy-MM-dd H:i:s'],
+                },
+                1:{
+                    'attribute':'uid',
+                    'value':model.showUsername(),
+                    'format':'raw',
+                },
+                2:{
+                    'attribute':'role',
+                    'value':model.getUserRole(),
+                },
+                3:{
+                    'attribute':'behavior',
+                },
+            }
+        }) }}
+    </div>
+
+<script type="text/javascript" src="/metis/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $(".form-group .col-sm-11").attr("class","col-sm-3");
+      $(".form-group .col-sm-3").eq(1).hide();
+
+      $(".input-group").datetimepicker({
+        format: 'yyyy-mm-dd',
+        todayBtn:  1,
+        todayHighlight: 1,
+        minView:2,
+        autoclose:1
+      });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,6 @@
+rq
+redis
+psycopg2-binary
+click
+gevent
+rq-scheduler

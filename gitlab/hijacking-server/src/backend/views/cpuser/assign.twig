@@ -1,0 +1,27 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title='分配服务' %}
+
+{% block content %}
+  <h2>{{ manager.username }}</h2>
+  <hr />
+  <p>
+  </p>
+  {% set form=ActiveForm.begin({
+    id: 'assign-business-form',
+    type: constant('kartik\\widgets\\ActiveForm::TYPE_HORIZONTAL' ),
+    formConfig: {labelSpan : 2,
+                 deviceSize : constant('kartik\\widgets\\ActiveForm::SIZE_SMALL')}
+    
+  }) %}
+
+  {{ form.field(model, 'sids').checkboxlist(ArrayHelper.getColumn(sers, 'fullname'))|raw }}
+  <div class="form-group">
+    <label for="business-name" class="col-sm-2 control-label">&nbsp;</label>
+    <div class="col-sm-4">
+      <input type='submit' value='提交' class='btn btn-large btn-primary' /> 
+    </div>
+  </div>
+
+  {{ void(form.end()) }}
+  
+{% endblock %}

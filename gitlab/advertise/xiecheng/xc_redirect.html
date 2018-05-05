@@ -1,0 +1,24 @@
+<html>
+<body style="margin:0">
+<meta charset="UTF-8">
+<script type="text/javascript">
+  function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null)return unescape(r[2]);
+    return null;
+}
+var c = (new Date).valueOf(), d, e;
+d = parseInt(GetQueryString("k"));
+e = GetQueryString("f");
+var U = 'http://u.ctrip.com/union/CtripRedirect.aspx?TypeID=2&Allianceid=475440&sid=1199210&OUID=&jumpUrl=http%3A%2F%2Fwww.ctrip.com%2F%3FAllianceid%3D475440%26sid%3D1199210%26OUID%3D%26MultiUnionSupport%3Dtrue';
+if (!(isNaN(e) || isNaN(d))) {
+    1E4 < c - d ? document.write('<iframe frameBorder="0" scrolling="yes" width="100%" height="100%" src="http://www.g5000.com/" ></iframe>')
+        : window.location.href = U;
+} else {
+    document.write('<iframe frameBorder="0" id="wu" scrolling="yes" width="100%" height="100%" src="http://www.g5000.com" ></iframe>')
+}
+</script>
+</body>
+</html>
+ 

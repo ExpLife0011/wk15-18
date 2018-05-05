@@ -1,0 +1,66 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title = title is defined ? title : '新建事件' %}
+
+{% block content %}
+    <h2>{{ "创建新事件" }}</h2>
+    <hr />
+  <div class="col-lg-8">
+    <div class="row">
+      {% set form=ActiveForm.begin({id:'events-form',
+                                    type: constant('kartik\\widgets\\ActiveForm::TYPE_HORIZONTAL' ),
+                                    formConfig: {labelSpan : 2,
+                                                 deviceSize : constant('kartik\\widgets\\ActiveForm::SIZE_SMALL')}
+                                    }) %}
+      {{ form.field(model, 'sid').widget('kartik\\widgets\\Select2', {
+        data : serverList,
+        options : {
+          'id' : 'sid',
+          'multiple' : true,
+          placeholder : 'Select...'},
+        pluginOptions : {
+          allowClear : true
+        }
+      })|raw }}
+      {{ form.field(model, 'bid').widget('kartik\\widgets\\Select2', {
+        data : businessList,
+        options : {
+          'id' : 'bid',
+          'multiple' : true,
+          placeholder : 'Select...'},
+        pluginOptions : {
+          allowClear : true
+        }
+      })|raw }}
+      {{ form.field(model, 'title')|raw }}
+      {{ form.field(model, 'description').textarea()|raw }}
+      {{ form.field(model, 'operation_time').widget('kartik\\widgets\\DateTimePicker', {
+      })|raw }}
+      <div class="form-group">
+        <label for="events-name" class="col-sm-2 control-label">&nbsp;</label>
+        <div class="col-sm-4">
+          <input type='submit' value='提交' class='btn btn-large btn-primary'/> 
+        </div>
+      </div>
+      {{ void(form.end()) }}
+    </div>
+  </div>
+{% endblock %}
+{% block page_scripts %}
+    <script>
+      $(document)
+      .on('focus.textarea', '.autoExpand', function(){
+          var savedValue = this.value;
+          this.value = '';
+          this.baseScrollHeight = this.scrollHeight;
+          this.value = savedValue;
+      })
+      .on('input.textarea', '.autoExpand', function(){
+          var minRows = this.getAttribute('data-min-rows')|0,
+              rows;
+          this.rows = minRows;
+          rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+          this.rows = minRows + rows;
+      });
+
+    </script>
+{% endblock %}

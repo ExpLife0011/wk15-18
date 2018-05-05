@@ -1,0 +1,30 @@
+{% set menu_name = "business" %}
+{% set sidebar_name = "业务规则列表" %}
+{% extends '@view/layouts/base.twig' %}
+{% set title="业务规则列表" %}
+{% block title_info %}
+<title>业务规则列表</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+  <h2></h2>
+  <hr />
+
+  {{ widget('yii\\grid\\GridView', {
+    'dataProvider': dataProvider,
+    'columns' : [
+      'id',
+      'name',
+      'rate_limit',
+      'pro',
+      'end',
+      'status',
+      'shield',
+      {'class' : 'yii\\grid\\ActionColumn',
+       'template' : '{view} {update}{delete}'
+       }
+    ]
+  }) }}
+</div>
+{% endblock %}

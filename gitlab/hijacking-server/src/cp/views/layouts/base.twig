@@ -1,0 +1,42 @@
+
+{{ this.beginPage() }}
+{{ void(appasset.register(this)) }}
+<!DOCTYPE html>
+<html lang="{{ app.language }}" class="no-js">
+  <head>
+    <meta charset="{{ app.charset }}">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/main.css" type="text/css" />
+    {{ HTML.csrfMetaTags()|raw }}
+    {{ this.head() }}
+    <style type="text/css">
+    .navbar-inverse{ background-color: #DDDDE2; border-color:#9898A7;}
+    .navbar-inverse .navbar-brand{ color:#646475;}
+    #main-menu {
+      background: #f3f3f5;
+      border-bottom: 0px;
+      position: relative;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #bcbcc6;
+      z-index: 1;
+    }
+    .row{margin-left:30px;}
+    </style>
+  </head>
+  <body class="">
+    {{ this.beginBody() }}
+{% include '@view/layouts/header.twig' %}
+    {% block body %}
+    {% endblock %}
+    <footer class="footer">
+        <div class="">
+        <p class="pull-left">&copy; My Company {{ "now"|date("Y") }} </p>
+        <p class="pull-right">goumin.com</p>
+        </div>
+    </footer>
+    {{ this.endBody() }}
+    {% block page_scripts %}
+    {% endblock %}
+  </body>
+</html>
+{{ this.endPage() }}

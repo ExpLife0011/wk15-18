@@ -1,0 +1,80 @@
+p{
+  margin: 0 0 -25px;
+  padding-left: 20px;
+}
+
+.list-y h3{
+  width: 600px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/*按钮部分*/
+    #up{
+      width: 600px;
+      height: 70px;
+      position: relative;
+    }
+    #list-form{
+        position: absolute;
+        left: 360px;
+        top: 0;
+        width: 800px;
+    }
+    #posi{
+      position: absolute;
+      top: 0px;
+      left: 445px;
+    }
+    #up .left{
+      float: left;
+    }
+    #up .but{
+        float: left;
+    }
+
+    #up h3{
+      width: 120px;
+      margin: 0;
+      padding: 0;
+      margin-left: 20px;
+      margin-right: 20px;
+      float: left;
+      margin-top: 5px;
+    }
+    
+    #up input{
+        float: left;
+    }
+
+    .big_box{
+      text-align: center;
+    }
+    .big_box tr{
+      border: 1px solid #000;
+    }
+    .big_box td{
+      border: 1px solid #000;
+    }
+    .big_box .one{
+      height: 40px;
+      background:#cccccc;
+    }
+    .big_box .two{
+        white-space:pre-wrap;
+        text-align: left;
+        width: 250px;
+    }
+    .big_box .two div{
+      width: 250px;
+      margin-top: -40px;
+      display: inline-block;
+    }
+    .big_box td:nth-of-type(1){
+      width: 100px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .big_box tr:nth-of-type(even){
+      background:#eeeeee;
+    }

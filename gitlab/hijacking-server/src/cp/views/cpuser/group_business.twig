@@ -1,0 +1,10 @@
+<tr>
+      <td>{{ model.id }}</td>
+      <td>{{ model.name }}</td>
+      <td>{{ model.rate_limit }}</td>
+      <td>{{ model.pro }}</td>
+      <td>{{ model.end }}</td>
+      <td>{% for k,v in model.srcUrls %}{{ v.url }}<br />{% endfor %}</td>
+      <td>{% for k,v in model.targets %}{{ v.content }}<br />{% endfor %}</td>
+</tr>
+

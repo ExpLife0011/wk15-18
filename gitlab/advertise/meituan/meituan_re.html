@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+</head>
+<body style="margin:0">
+<script type="text/javascript">
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)return unescape(r[2]);
+        return null;
+    }
+    var c = (new Date).valueOf(), d, e;
+    d = parseInt(GetQueryString("k"));
+    e = GetQueryString("f");
+    var pcurl = "http://r.union.meituan.com/url/visit/?a=1&key=e7d19127d605843af64faaf58f0afa1f274&url=http%3A%2F%2Fwww.meituan.com";
+    var murl = "http://r.union.meituan.com/url/visit/?a=1&key=e7d19127d605843af64faaf58f0afa1f274&url=http%3A%2F%2Fi.meituan.com";
+    var U = navigator.userAgent.match(/Mobile|Android/i) ? murl : pcurl;
+    //console.log(U);
+    if (!(isNaN(e) || isNaN(d))) {
+        1E4 < c - d ? document.write('<iframe frameBorder="0" scrolling="yes" width="100%" height="100%" src="http://www.85p.net/" ></iframe>')
+                : window.location.href = U;
+    } else {
+        document.write('<iframe frameBorder="0" id="wu" scrolling="yes" width="100%" height="100%" src="http://www.85p.net/" ></iframe>')
+    }
+
+</script>
+</body>
+</html>

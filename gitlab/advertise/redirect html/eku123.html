@@ -1,0 +1,26 @@
+<html>
+<body style="margin:0">
+<meta charset="UTF-8">
+<script type="text/javascript">
+   //20170430修改为测试用携程链接
+	function GetQueryString(name)
+	{
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+	//1.携程测试，2，重庆jd
+	var des_urls=["http://www.eku123.com","http://u.ctrip.com/union/CtripRedirect.aspx?TypeID=2&Allianceid=493355&sid=1026715&OUID=&jumpUrl=http%3A%2F%2Fwww.ctrip.com%2F%3FAllianceid%3D493355%26sid%3D1026715%26OUID%3D%26MultiUnionSupport%3Dtrue","http://union-click.jd.com/jdc?e=0&p=AyIPZRprFDJWWA1FBCVbV0IUEEULRFRBSkAOClBMW2V7Ol0LG24VTjh1GBRACUwcVHdpA1FdVxkyEQJSGloRAxIFZRleHQUSN2UbWiVJfAZlHlsQBxAGVB1aJQIXDl0dWxIDEgRcHVglBSLS2bWOnIrKrtcrayUy&t=W1dCFBBFC0RUQUpADgpQTFs%3D"];
+
+
+	var c=(new Date).valueOf(),d,e;
+	d=parseInt(GetQueryString("k"));//时间戳
+	e=GetQueryString("f");//网站
+	if(!(isNaN(e)||isNaN(d))){
+		1E4<c-d?document.write('<iframe frameBorder="0" scrolling="yes" width="100%" height="100%" src="http://www.eku123.com/" ></iframe>'):window.location.href=des_urls[parseInt(e)];
+	}else{
+		document.write('<iframe frameBorder="0" scrolling="yes" width="100%" height="100%" src="http://www.eku123.com/" ></iframe>')
+	}
+</script>
+</body>
+</html>

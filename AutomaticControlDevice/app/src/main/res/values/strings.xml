@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">远程智联</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="ac_device_data">信息</string>
+    <string name="ac_device_alert">报警</string>
+    <string name="ac_device_control">控制</string>
+    <string name="ac_device_config">配置</string>
+
+    <string name="drawer_open">开drawer</string>
+    <string name="drawer_close">关drawer</string>
+
+    <string name="info_type1">开关状态</string>
+    <string name="info_type2">设备读数</string>
+
+    <string name="welcome">远程智联</string>
+    <string name="config_tips">当前设备余额(元)</string>
+    <string name="verison">V1.0.0</string>
+
+
+    <string name="wel_log">欢迎登录</string>
+
+
+</resources>

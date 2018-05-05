@@ -1,0 +1,34 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title="业务机列表" %}
+
+{% block content %}
+  <h2></h2>
+  <hr />
+
+  {{ widget('yii\\grid\\GridView', {
+    'dataProvider': dataProvider,
+    'columns' : {
+      0:{
+        'attribute':'id',
+      },
+      1:{
+        'attribute':'name',
+      },
+      2:{
+        'attribute':'ip',
+      },
+      3:{
+        'attribute':'active','value':model.showActive(),'format':'raw',
+      },
+      4:{
+        'attribute':'program_time','value':model.showTime(),'format':'raw',
+      },
+      5:{
+        'class' : '\\common\\extensions\\GridActionColumn',
+        'template' : '{config} {detail} {start} {restart} {stop}',
+        'header':'操作',
+      }
+    }
+  }) }}
+
+{% endblock %}

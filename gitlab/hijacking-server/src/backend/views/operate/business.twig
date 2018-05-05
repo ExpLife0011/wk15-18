@@ -1,0 +1,111 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title = '业务看板' %}
+
+{% block content %}
+    <link rel="stylesheet" href="/css/todaynews.css">
+    <link rel="stylesheet" href="/css/servernew.css">
+    <div>
+        {% if (business.id == 0) %}
+            <h2>{{ '0 软件操作' }}</h2>
+        {% else %}
+            <h2>{{ business.id }}&nbsp; {{ business.name}}</h2>
+        {% endif %}
+        <div id="form_two">
+          {% set form = ActiveForm.begin({
+              id : 'list-form',
+              type: constant('kartik\\widgets\\ActiveForm::TYPE_HORIZONTAL' ),
+              'method': 'post','action':'/index.php?r=operate/business',
+              formConfig: {labelSpan : 1,
+                  deviceSize : constant('kartik\\widgets\\ActiveForm::SIZE_SMALL')}
+          }) %}
+
+          {{ form.field(model, 'bid').widget('kartik\\widgets\\Select2', {
+              data : businessList,
+              options : {
+                'id' : 'bid',
+                placeholder : 'Select...'},
+              pluginOptions : {
+                allowClear : true
+              }
+          })|raw }}
+          {{ form.field(model, 'cdate_start').widget('kartik\\widgets\\DateTimePicker')|raw }}
+          {{ form.field(model, 'cdate_end').widget('kartik\\widgets\\DateTimePicker')|raw }}
+          <input type='submit' value='查看' class='look btn btn-large btn-primary' />
+          {{ void(form.end()) }}
+        </div>
+
+        <div style="overflow:auto">
+          {% if result %}
+              <table class="big_box" cellspacing='0'>            
+                <tr  class="one">
+                  <td></td>
+                  {% for s in server %}
+                    {% if (s['id'] == 0) %}
+                      <td>{{ s['id'] ~ '.' ~ s['name'] }}</td>
+                    {% else %}
+                      <td> <a href="/index.php?r=server/view&id={{ s['id'] }}" target="_blank">{{ s['id'] ~ '.' ~ s['name'] }}</a></td>
+                    {% endif %}
+                  {% endfor %}
+                </tr>  
+              {% for d in datelist %}            
+                <tr>                  
+                  <td>{{ d }}</td>                  
+                {% for s in server %}
+                  <td class="two">
+                    <div>
+                      {% if (result[d][s.id]) %} 
+                        {% for res in result[d][s.id] %}
+                          {% if (res.viewPoint) %}
+                              <p><a href="/index.php?r=operate/view&id={{ res.id }}" target="_blank">{{ '[' ~ res.id ~ ']'}}</a>&nbsp;{{ res.title }}</p>
+                              {% for view_point in res.viewPoint %}
+                                {% if (view_point.planning_cdate == d) %}
+                                  <p>{{ '观察点 [' ~ view_point.id ~ ']' }}</p>
+                                  <p>{{ view_point.created_at|date("Y-m-d H:i:s") }}</p>
+                                  {% if (view_point.content|length > 30) %}
+                                    <p>{{ view_point.content[:30] ~ '...' }}</p>
+                                  {% else %}
+                                    <p>{{ view_point.content }}</p>
+                                  {% endif %}
+                                {% endif %}
+                              {% endfor %}
+                              <p>{{ res.user.username }}</p>
+                              <p>{{ res.status ? '已完成' :'' }}</p>
+                          {% else %}
+                            <p><a href="/index.php?r=operate/view&id={{ res.id }}" target="_blank">{{ '[' ~ res.id ~ ']' }}</a>&nbsp;{{ res.title }}</p>
+                            <p>{{ res.created_at|date("Y-m-d H:i:s") }}</p>
+                            {% if (res.description|length > 30) %}
+                              <p>{{ res.description[:30] ~ '...' }}</p>
+                            {% else %}
+                              <p>{{ res.description }}</p>
+                            {% endif %}
+                            <p>{{ res.user.username }}</p>
+                            <p>{{ res.status ? '已完成' :'' }}</p>
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                  </td>
+                {% endfor %}
+                </tr> 
+              {% endfor %}             
+              </table>
+          {% endif %} 
+        </div>
+    </div>
+
+<script type="text/javascript" src="/metis/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $(".form-group .col-sm-11").attr("class","col-sm-3");
+      $(".form-group .col-sm-3").eq(1).hide();
+
+      $(".input-group").datetimepicker({
+        format: 'yyyy-mm-dd',
+        todayBtn:  1,
+        todayHighlight: 1,
+        minView:2,
+        autoclose:1
+      });
+    });
+</script>
+{% endblock %}

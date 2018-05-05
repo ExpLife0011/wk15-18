@@ -1,0 +1,90 @@
+{% set menu_name = "business" %}
+{% set sidebar_name = "业务规则列表" %}
+{% extends '@view/layouts/base.twig' %}
+{% set title='查看业务规则' %}
+
+{% block body %}
+
+<style>
+.list-view{
+    overflow: hidden;
+}
+</style>
+<div class="content">
+  <h2>{{ model.name }}</h2>
+  <hr />
+  <p>
+    {{ HTML.a('编辑', {0:'update', 'id': model.id}, {'class' : 'btn btn-primary'})|raw }}
+    {{ HTML.a('绑定服务器', {0:'bind', 'id': model.id}, {'class' : 'btn btn-primary'})|raw }}
+    {{ HTML.a('导出源地址', {0:'export', 'id': model.id}, {'class' : 'btn btn-primary'})|raw }}
+  </p>
+  {{ widget('yii\\widgets\\DetailView', {
+    'model' : model,
+    'attributes' : [
+      'id',
+      'name',
+      'priority',
+      'blackwords',
+      'rate_limit',
+      'pro',
+      'end',
+      'status',
+      'shield',
+      'created_at:datetime'
+    ]
+  }) }}
+    <div class="box">
+      <header>
+        <h5>绑定该业务的服务器</h5>
+        <div class="toolbar">
+          <div class="btn-group">
+            <a class="btn btn-sm btn-default minimize-box" data-toggle="collapse" href="#defaultTable">
+              <i class="fa fa-angle-up"></i>
+            </a> 
+            <a class="btn btn-danger btn-sm close-box">
+              <i class="fa fa-times"></i>
+            </a> 
+          </div>
+        </div>
+      </header>
+      <div class="body collapse in" id="defaultTable">
+        <table class="table responsive-table">
+          <thead>
+            <tr>
+              <th>服务器ID</th>
+              <th>服务器名称</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% if servers is not empty %}
+            {% for v in servers %}
+            <tr>
+                  <td>{{ v.sid }}</td>
+                  <td><a href="/cpuser/serverview/{{ v.sid }}" target="_blank">{{ v.server.name }}</a></td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <h4>源地址(共{{ srcUrlCount }}条)</h4>
+  {{ widget('yii\\widgets\\ListView', {
+    'dataProvider' : srcUrlProvider,
+    'itemView' : 'src_url.twig',
+    'layout' : '{items}'
+  }) }}
+  <h4>目标(共{{ targetCount }}条)</h4>
+  {{ widget('yii\\widgets\\ListView', {
+    'dataProvider' : targetProvider,
+    'itemView' : 'target.twig',
+    'layout' : '{items}'
+  }) }}
+  <h4>Referer(共{{ referCount }}条)</h4>
+  {{ widget('yii\\widgets\\ListView', {
+    'dataProvider' : referProvider,
+    'itemView' : 'refer.twig',
+    'layout' : '{items}'
+  }) }}
+</div>
+{% endblock %}

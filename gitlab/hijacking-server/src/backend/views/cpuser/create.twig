@@ -1,0 +1,28 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title = title is defined ? title : '添加CP用户' %}
+
+{% block content %}
+  <h2>添加CP用户</h2>
+  <hr />
+
+  <div class="col-lg-6">
+    <div class="row">
+      {% set form = ActiveForm.begin({
+        id : 'server-form',
+        type: constant('kartik\\widgets\\ActiveForm::TYPE_HORIZONTAL' ),
+        formConfig: {labelSpan : 2,
+                     deviceSize : constant('kartik\\widgets\\ActiveForm::SIZE_SMALL')}
+      }) %}
+      {{ form.field(model, 'username')|raw }}
+      {{ form.field(model, 'password').passwordInput()|raw }}
+      {{ form.field(model,'email')|raw }}
+      <div class="form-group">
+        <label for="business-name" class="col-sm-2 control-label">&nbsp;</label>
+        <div class="col-sm-4">
+          <input type='submit' value='提交' class='btn btn-large btn-primary' /> 
+        </div>
+      </div>
+      {{ void(form.end) }}
+    </div>
+  </div>
+{% endblock %}

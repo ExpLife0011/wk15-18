@@ -1,0 +1,18 @@
+
+
+#form_two{
+  position: relative;
+  height: 350px;
+}
+
+#list-form{
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 1200px;
+}
+#form_two .look{
+    position: absolute;
+    left: 180px;
+    bottom: -50px;
+}

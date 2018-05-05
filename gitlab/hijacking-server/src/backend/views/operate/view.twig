@@ -1,0 +1,357 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title='查看事件详情' %}
+
+{% block content %}
+  <link rel="stylesheet" href="/css/commentnew.css">
+  
+  <h2>{{ model.title }}</h2>
+  <hr />
+
+  <div class="bigBox">
+    <table cellspacing='0' class="smallBox">
+      <tr>
+        <td>事件ID</td>
+        <td>{{ model.id }}</td>
+      </tr>
+      <tr>
+        <td>事件名称</td>
+        <td>{{ model.title }}</td>
+      </tr>
+      <tr>
+        <td>提交人</td>
+        <td>{{ model.user.id }} {{ model.user.username }}</td>
+      </tr>
+      <tr>
+        <td>服务器</td>
+        <td>
+          {% if (model.sid == 0) %}
+            {{ model.sid }} {{ '全部服务器' }}
+          {% else %}
+            <a href="/index.php?r=server/view&id={{ model.sid }}" target="_blank">{{ model.sid }}</a> {{ model.server.name }}
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td>业务</td>
+        <td>
+          {% if (model.bid == 0) %}
+            {{ model.bid }} {{ '软件操作' }}
+          {% else %}
+            <a href="/index.php?r=business/view&id={{ model.bid }}" target="_blank">{{ model.bid }}</a> {{ model.business.name }}
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td>事件时间</td>
+        <td>{{ model.operation_time }}</td>
+      </tr>
+      <tr>
+        <td>提交时间</td>
+        <td>{{ model.created_at|date("Y-m-d H:i:s") }}</td>
+      </tr>
+    </table>
+
+    <!-- 右 -->
+    <ul class="right">
+      <li>事件完整描述信息</li>
+      <li>
+        <p>{{ model.description }}</p>
+        
+      </li>
+      <li>
+        <button type="button" class="btn btn-primary" id="comment">Comment</button>
+
+        {% if (model.status == Events.STATUS_ACTIVE) %}
+          <button type="button" class="btn btn-primary" id="add">添加观察点</button>
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+  <hr>
+
+  <!-- 下 -->
+  {% for comment in commentList %}
+  <div class="down">
+    <div class="down_left">
+      <p>注释{{ comment.id }}</p>
+    </div>
+
+    <div class="down_bettown">
+      <p>{{ comment.content }}</p>
+    </div>
+
+    <div class="down_right">
+      <p>{{ comment.user.username }}</p>
+      <p>{{ comment.created_at|date("Y-m-d H:i:s") }}</p>
+    </div>
+  </div>
+  {% endfor %}
+
+  {% for view_point in viewPointList %}
+  <div class="down_last">
+    <ul class="last_up">
+      <li>观察点{{ view_point.id }}</li>
+      <li>添加时间:&nbsp;&nbsp;{{ view_point.created_at|date("Y-m-d H:i:s") }}</li>
+      <li>计划时间:&nbsp;&nbsp;{{ view_point.planning_time|date("Y-m-d H:i:s") }}</li>
+    </ul>
+    <ul class="down_left">
+      <li>观察内容</li>
+      <li>结果</li>
+    </ul>
+
+    <div class="down_bettown">
+      <div class="bettown_up">
+        <p>
+          {{ view_point.content }}
+        </p>
+      </div>
+      <div class="bettown_down">
+        <p>
+          {{ view_point.result }}
+        </p>
+      </div>
+    </div>
+
+    {% if (view_point.result == null) %}
+      <div class="last_right">
+        <button type="button" class="btn btn-primary result" id="result_{{ view_point.id }}">上传结果</button>
+      </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  <!-- 隐藏区域 -->
+  <div id="over">
+    <div class="over_up">
+      Add Comment
+    </div>
+    
+    <div class="over_bettown">
+
+      <form action="/index.php?r=operate/add-comment" method="post" id="over_form">
+        <textarea id="comment_content">
+          
+        </textarea>
+      
+        <div class="button">
+          <button type="button" id="comment_submit">提交</button>
+
+          {% if (model.status == Events.STATUS_ACTIVE) %}
+            <button type="button" id="comment_result">提交并结论</button>
+          {% endif %}
+
+          <button type="button" id="cancel">取消</button>
+        </div>
+      </form>
+    </div>
+        
+    <div class="over_down">
+      
+    </div>
+  </div>
+  
+
+  <!-- 2 -->
+  <div id="over_two">
+    <div class="over_up">
+      添加观察点
+    </div>
+    
+    <div class="over_bettown">
+      <div class="two_up">
+        <div class="two_up_left">
+          计划时间
+        </div>
+        <div class="two_up_right">
+          <div>
+            <input id="demo" placeholder="请输入日期" class="laydate-icon" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+          </div>
+        </div>
+      </div>
+
+      <div class="over_two">
+        <div class="two_down_left">
+          观察内容
+        </div>
+        <div class="two_down_right">
+          <textarea id="view_point_content" style="margin: 0px; width: 272px; height: 146px;"></textarea>
+        </div>
+      </div>
+
+      <div class="button_two">
+        <button type="button" id="view_point_submit">提交</button>
+        <button type="button" id="Eliminate">取消</button>
+      </div>
+    </div>
+        
+    <div class="over_down">
+      
+    </div>
+  </div>
+
+
+  <!-- 3 -->
+  <div id="over_three">
+    <div class="over_up">
+      上传结果
+    </div>
+    
+    <div class="over_bettown">
+      <div class="over_form">
+        <textarea id="result_content" style="margin: 0px; width: 396px; height: 146px;">          
+        </textarea>
+      </div>
+
+      <div class="button_two">
+        <button type="button" id="result_submit">提交</button>
+        <button type="button" id="clean">取消</button>
+      </div>
+    </div>
+        
+    <div class="over_down">
+      
+    </div>
+  </div>
+  
+
+<script type="text/javascript" src="/metis/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/metis/js/jFixed.min.js"></script>
+<script type="text/javascript" src="/laydate/laydate.js"></script>
+<script type="text/javascript">
+  ;!function(){
+  laydate({
+     elem: '#demo'
+  })
+  }();
+
+  $("#comment").click(function(){
+      $("#over").fadeIn();
+  })
+  $("#cancel").click(function(){
+      $("#over").fadeOut();
+  })
+
+  $("#add").click(function(){
+      $("#over_two").fadeIn();
+  })
+  $("#Eliminate").click(function(){
+      $("#over_two").fadeOut();
+  })
+
+  var viewID;
+  $(".result").click(function(){
+      $("#over_three").fadeIn();
+      viewID = this.id.split("_")[1];
+  })
+  
+  $("#clean").click(function(){
+      $("#over_three").fadeOut();
+  })
+
+  var _csrf ="<?=Yii::$app->request->getCsrfToken()?>";
+  $("#comment_submit").click(function(){
+      var parm = {};
+          parm.id = "{{ model.id }}"
+          parm.content = $('#comment_content').val();
+          parm._csrf = _csrf;
+      $.ajax({
+          type: "post",
+          url: "/index.php?r=operate/add-comment",
+          dataType: "json",
+          data:parm,
+          success: function(msg){
+              if(msg.request == "success")
+              {
+                  location.reload();
+              }else {
+                  alert(msg.msg);
+              }
+          },
+          error: function(msg){
+              alert("网络繁忙，请稍后再试！");
+          },complete:function(){
+              
+          }
+      });
+  });
+  $("#comment_result").click(function(){
+      var parm = {};
+          parm.id = "{{ model.id }}"
+          parm.content = $('#comment_content').val();
+          parm._csrf = _csrf;
+      $.ajax({
+          type: "post",
+          url: "/index.php?r=operate/comment-result",
+          dataType: "json",
+          data:parm,
+          success: function(msg){
+              if(msg.request == "success")
+              {
+                  location.reload();
+              }else {
+                  alert(msg.msg);
+              }
+          },
+          error: function(msg){
+              alert("网络繁忙，请稍后再试！");
+          },complete:function(){
+              
+          }
+      });
+  });
+  $("#view_point_submit").click(function(){
+      var parm = {};
+          parm.id = "{{ model.id }}"
+          parm.content = $('#view_point_content').val();
+          parm.planning_time = $('#demo').val();
+          parm._csrf = _csrf;
+          console.log(parm.planning_time);
+      $.ajax({
+          type: "post",
+          url: "/index.php?r=operate/add-view",
+          dataType: "json",
+          data:parm,
+          success: function(msg){
+              if(msg.request == "success")
+              {
+                  location.reload();
+              }else {
+                  alert(msg.msg);
+              }
+          },
+          error: function(msg){
+              alert("网络繁忙，请稍后再试！");
+          },complete:function(){
+              
+          }
+      });
+  });
+  $("#result_submit").click(function(){
+      var parm = {};
+          parm.id = viewID;
+          parm.result = $('#result_content').val();
+          parm._csrf = _csrf;
+      $.ajax({
+          type: "post",
+          url: "/index.php?r=operate/add-result",
+          dataType: "json",
+          data:parm,
+          success: function(msg){
+              if(msg.request == "success")
+              {
+                  location.reload();
+              }else {
+                  alert(msg.msg);
+              }
+          },
+          error: function(msg){
+              alert("网络繁忙，请稍后再试！");
+          },complete:function(){
+              
+          }
+      });
+  });
+</script>
+
+
+{% endblock %}

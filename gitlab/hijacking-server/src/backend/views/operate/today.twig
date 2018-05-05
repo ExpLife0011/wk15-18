@@ -1,0 +1,251 @@
+{% extends '@view/layouts/main.twig' %}
+{% set title="今日看板" %}
+
+{% block content %}
+  <link rel="stylesheet" href="/css/todaynews.css">
+
+  <h2>事件列表</h2>
+  <hr />
+
+
+  <div id="up">
+    <div class="left">
+      <div class="but">
+        <a id="yesterday" class="btn btn-primary" href="javascript:void(0)">前一天</a>
+      </div>
+      <h3>{{ model.cdate }}</h3>
+      <div class="but">
+        <a id="tomorrow" class="btn btn-primary" href="javascript:void(0)">后一天</a>
+      </div>
+    </div>
+
+    <div class="right">
+      {% set form = ActiveForm.begin({
+            id : 'list-form',
+            class:'form_one',
+            type: constant('kartik\\widgets\\ActiveForm::TYPE_HORIZONTAL' ),
+            'method': 'post','action':'/index.php?r=operate/today',
+            formConfig: {labelSpan : 1,
+                         deviceSize : constant('kartik\\widgets\\ActiveForm::SIZE_SMALL')}
+      }) %}
+        {{ form.field(model, 'cdate').widget('kartik\\widgets\\DateTimePicker')|raw }}
+        <input type='submit' value='查看' id="posi" class='btn btn-large btn-primary' />
+      {{ void(form.end()) }}
+    </div>
+  </div>
+
+  <div style="overflow:auto">
+    {% if result %}
+        <table class="big_box" cellspacing='0'>            
+            <tr class="one">
+              <td></td>
+              {% for b in business %}
+                {% if (b['id'] == 0) %}
+                  <td>{{ b['id'] ~ '.' ~ b['name'] }}</td>
+                {% else %}
+                  <td> <a href="/index.php?r=business/view&id={{ b['id'] }}" target="_blank">{{ b['id'] ~ '.' ~ b['name'] }}</a></td>
+                {% endif %}
+              {% endfor %}
+            </tr>  
+              {% for s in server %}            
+                <tr> 
+                  {% if (s.id == 0) %}
+                    <td>{{ s.id ~ '.' ~ s.name }}</td> 
+                  {% else %}
+                    <td><a href="/index.php?r=server/view&id={{ s.id }}" target="_blank"> {{ s.id ~ '.' ~ s.name }} </a></td>                  
+                  {% endif %}
+                {% for b in business %}
+                  <td class="two">
+                    {% if (result[s.id][b.id]) %}
+                      {% for res in result[s.id][b.id] %}
+                        {% if (res.viewPoint) %}
+                            <p><a href="/index.php?r=operate/view&id={{ res.id }}" target="_blank">{{ '[' ~ res.id ~ ']'}}</a>&nbsp;{{ res.title }}</p>
+                            {% for view_point in res.viewPoint %}
+                              {% if (view_point.planning_cdate == model.cdate) %}
+                                <p>{{ '观察点 [' ~ view_point.id ~ ']' }}</p>
+                                <p>{{ view_point.created_at|date("Y-m-d H:i:s") }}</p>
+                                {% if (view_point.content|length > 30) %}
+                                  <p>{{ view_point.content[:30] ~ '...' }}</p>
+                                {% else %}
+                                  <p>{{ view_point.content }}</p>
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+                            <p>{{ res.user.username }}</p>
+                            <p>{{ res.status ? '已完成' :'' }}</p>
+                        {% else %}
+                            <p><a href="/index.php?r=operate/view&id={{ res.id }}" target="_blank">{{ '[' ~ res.id ~ ']'}}</a>&nbsp;{{ res.title }}</p>
+                            <p>{{ res.created_at|date("Y-m-d H:i:s") }}</p>
+                            {% if (res.description|length > 30) %}
+                              <p>{{ res.description[:30] ~ '...' }}</p>
+                            {% else %}
+                              <p>{{ res.description }}</p>
+                            {% endif %}
+                            <p>{{ res.user.username }}</p>
+                            <p>{{ res.status ? '已完成' :'' }}</p>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  </td>
+                {% endfor %}
+                </tr> 
+              {% endfor %}             
+        </table>
+    {% endif %}
+  </div>
+
+
+<div style="overflow:auto">
+  {% if result_today %}
+      <table class="big_box" cellspacing='0'>            
+          <tr class="one">
+            <td></td>
+            {% for b in business_today %}
+              {% if (b['id'] == 0) %}
+                <td>{{ b['id'] ~ '.' ~ b['name'] }}</td>
+              {% else %}
+                <td> <a href="/index.php?r=business/view&id={{ b['id'] }}" target="_blank">{{ b['id'] ~ '.' ~ b['name'] }}</a></td>
+              {% endif %}
+            {% endfor %}
+          </tr>  
+        {% for s in server_today %}            
+          <tr> 
+            {% if (s.id == 0) %}
+              <td>{{ s.id ~ '.' ~ s.name }}</td>
+            {% else %}
+              <td><a href="/index.php?r=server/view&id={{ s.id }}" target="_blank"> {{ s.id ~ '.' ~ s.name }} </a></td>  
+            {% endif %}
+          {% for b in business_today %}
+            <td class="two">
+              <div>
+                {% if (result_today[s.id][b.id]) %} 
+                  {% for res_today in result_today[s.id][b.id] %}
+                    {% if (res_today.viewPoint) %}
+                        <p><a href="/index.php?r=operate/view&id={{ res_today.id }}" target="_blank">{{ '[' ~ res_today.id ~ ']'}}</a>&nbsp;{{ res_today.title }}</p>
+                        {% for view_point in res_today.viewPoint %}
+                          {% if (view_point.planning_cdate == today) %}
+                            <p>{{ '观察点 [' ~ view_point.id ~ ']' }}</p>
+                            <p>{{ view_point.created_at|date("Y-m-d H:i:s") }}</p>
+                            {% if (view_point.content|length > 30) %}
+                              <p>{{ view_point.content[:30] ~ '...' }}</p>
+                            {% else %}
+                              <p>{{ view_point.content }}</p>
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                        <p>{{ res_today.user.username }}</p>
+                        <p>{{ res_today.status ? '已完成' :'' }}</p>
+                    {% else %}
+                      <p><a href="/index.php?r=operate/view&id={{ res_today.id }}" target="_blank">{{ '[' ~ res_today.id ~ ']' }}</a>&nbsp;{{ res_today.title }}</p>
+                      <p>{{ res_today.created_at|date("Y-m-d H:i:s") }}</p>
+                      {% if (res_today.description|length > 30) %}
+                        <p>{{ res_today.description[:30] ~ '...' }}</p>
+                      {% else %}
+                        <p>{{ res_today.description }}</p>
+                      {% endif %}
+                      <p>{{ res_today.user.username }}</p>
+                      <p>{{ res_today.status ? '已完成' :'' }}</p>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </td>
+          {% endfor %}
+          </tr> 
+        {% endfor %}             
+      </table>
+  {% endif %} 
+</div>
+
+<div class="list-y" style="overflow:auto">
+  {% if result_yesterday %}
+  <h3>{{ yesterday }}</h3>
+      <table class="big_box" cellspacing='0'>            
+          <tr class="one">
+            <td></td>
+            {% for b in business_yesterday %}
+              {% if (b.id == 0) %}
+                <td>{{ b.id ~ '.' ~ b.name }}</td>
+              {% else %}
+                <td> <a href="/index.php?r=business/view&id={{ b.id }}" target="_blank">{{ b.id ~ '.' ~ b.name }}</a></td>
+              {% endif %}
+            {% endfor %}
+          </tr>  
+            {% for s in server_yesterday %}            
+              <tr> 
+                {% if (s.id == 0) %}   
+                  <td>{{ s.id ~ '.' ~ s.name }}</td>              
+                {% else %}
+                  <td><a href="/index.php?r=server/view&id={{ s.id }}" target="_blank"> {{ s.id ~ '.' ~ s.name }} </a></td>  
+                {% endif %}                
+              {% for b in business_yesterday %}
+                <td class="two">
+                  <div>
+                    {% if (result_yesterday[s.id][b.id]) %} 
+                      {% for res_yesterday in result_yesterday[s.id][b.id] %}
+                        {% if (res_yesterday.viewPoint) %}
+                            <p><a href="/index.php?r=operate/view&id={{ res_yesterday.id }}" target="_blank">{{ '[' ~ res_yesterday.id ~ ']'}}</a>&nbsp;{{ res_yesterday.title }}</p>
+                            {% for view_point in res_yesterday.viewPoint %}
+                              {% if (view_point.planning_cdate == yesterday) %}
+                                <p>{{ '观察点 [' ~ view_point.id ~ ']' }}</p>
+                                <p>{{ view_point.created_at|date("Y-m-d H:i:s") }}</p>
+                                {% if (view_point.content|length > 30) %}
+                                  <p>{{ view_point.content[:30] ~ '...' }}</p>
+                                {% else %}
+                                  <p>{{ view_point.content }}</p>
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+                            <p>{{ res_yesterday.user.username }}</p>
+                            <p>{{ res_yesterday.status ? '已完成' :'' }}</p>
+                        {% else %}
+                          <p><a href="/index.php?r=operate/view&id={{ res_yesterday.id }}" target="_blank">{{ '[' ~ res_yesterday.id ~ ']' }}</a>&nbsp;{{ res_yesterday.title }}</p>
+                          <p>{{ res_yesterday.created_at|date("Y-m-d H:i:s") }}</p>
+                          {% if (res_yesterday.description|length > 30) %}
+                            <p>{{ res_yesterday.description[:30] ~ '...' }}</p>
+                          {% else %}
+                            <p>{{ res_yesterday.description }}</p>
+                          {% endif %}
+                          <p>{{ res_yesterday.user.username }}</p>
+                          <p>{{ res_yesterday.status ? '已完成' :'' }}</p>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  </div>
+                </td>
+              {% endfor %}
+              </tr> 
+            {% endfor %}             
+      </table>
+  {% endif %} 
+</div>
+
+  <script type="text/javascript" src="/metis/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/metis/js/jFixed.min.js"></script>
+  <script type="text/javascript">
+    
+
+    $("#yesterday").click(function(){
+      $("#eventsform-cdate").val('{{ yesterday }}');
+      $("#list-form").submit();
+    });
+    $("#tomorrow").click(function(){
+      $("#eventsform-cdate").val('{{ tomorrow }}');
+      $("#list-form").submit();
+    });
+    $(document).ready(function(){
+      $(".form-group .col-sm-11").attr("class","col-sm-3");
+      $(".form-group .col-sm-3").eq(1).hide();
+
+      $(".input-group").datetimepicker({
+        format: 'yyyy-mm-dd',
+        todayBtn:  1,
+        todayHighlight: 1,
+        minView:2,
+        autoclose:1
+      });
+    });
+
+  </script>
+
+{% endblock %}
